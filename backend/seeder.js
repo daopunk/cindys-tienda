@@ -5,7 +5,7 @@ import products from './data/products.js';
 import CT_User from './models/userModel.js';
 import CT_Product from './models/productModel.js';
 import CT_Order from './models/orderModel.js';
-import connectDB from './config/db.js';
+import connectDB from './db.js';
 
 dotenv.config();
 
