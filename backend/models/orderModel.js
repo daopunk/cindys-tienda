@@ -4,14 +4,14 @@ const orderSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'User'
+    ref: 'CT_User'
   },
   orderItems: [{
     name: { type: String, required: true },
     qty: { type: Number, required: true },
     image: { type: String, required: true },
     price: { type: Number, required: true },
-    product: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Product' }
+    product: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'CT_Product' }
   }],
   shippingAddress: {
     address: { type: String, required: true },
@@ -54,10 +54,10 @@ const orderSchema = mongoose.Schema({
   },
   isDelivered: {
     type: Boolean,
-    required: true,
+    required: false,
     default: false
   },
-  delieveredAt: {
+  deliveredAt: {
     type: Date
   }
 }, {
