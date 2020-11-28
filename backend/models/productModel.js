@@ -14,6 +14,10 @@ const productSchema = mongoose.Schema({
     type: String,
     required: false
   },
+  featureImage: {
+    type: String,
+    required: false
+  },
   category: {
     type: String,
     required: false

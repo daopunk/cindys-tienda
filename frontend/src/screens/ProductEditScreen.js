@@ -17,6 +17,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
+  const [featureImage, setFeatureImage] = useState('');
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
@@ -39,6 +40,7 @@ const ProductEditScreen = ({ match, history }) => {
         setName(product.name);
         setPrice(product.price);
         setImage(product.image);
+        setFeatureImage(product.featureImage);
         setCategory(product.category);
         setCountInStock(product.countInStock);
         setDescription(product.description);
@@ -46,9 +48,15 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }, [dispatch, productId, product, history, successUpdate]);
 
+  const refreshPage = () => {
+    window.location.reload(true);
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateProduct({ _id: productId, name, price, image, category, countInStock }));
+    dispatch(updateProduct({ _id: productId, name, description, price, image, category, countInStock }));
+    dispatch(listProductDetails(productId));
+    refreshPage();
   }
 
   const uploadFileHandler = async (e) => {
@@ -77,35 +85,47 @@ const ProductEditScreen = ({ match, history }) => {
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) :
-          (<Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
-              <Form.Control type='name' placeholder='name' value={name} onChange={(e)=>setName(e.target.value)}></Form.Control>
-            </Form.Group>
-            <Form.Group controlId='price'>
-              <Form.Label>Price</Form.Label>
-              <Form.Control type='number' placeholder='price' value={price} onChange={(e)=>setPrice(e.target.value)}></Form.Control>
-            </Form.Group>
-            <Form.Group controlId='image'>
-              <Form.Label>Image</Form.Label>
-              <Form.Control type='text' placeholder='image url' value={image} onChange={(e)=>setImage(e.target.value)}></Form.Control>
-              <Form.File id='image-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
-              {uploading && <Loader />}
-            </Form.Group>
-            <Form.Group controlId='category'>
-              <Form.Label>Category</Form.Label>
-              <Form.Control type='text' placeholder='category' value={category} onChange={(e)=>setCategory(e.target.value)}></Form.Control>
-            </Form.Group>
-            <Form.Group controlId='countInStock'>
-              <Form.Label>Count in Stock</Form.Label>
-              <Form.Control type='number' placeholder='countInStock' value={countInStock} onChange={(e)=>setCountInStock(e.target.value)}></Form.Control>
-            </Form.Group>
-            <Form.Group controlId='description'>
-              <Form.Label>Description</Form.Label>
-              <Form.Control type='text' placeholder='description' value={description} onChange={(e)=>setDescription(e.target.value)}></Form.Control>
-            </Form.Group>
-            <Button type='submit' variant='primary'>Update</Button>
-          </Form>)}
+          (<Fragment>
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId='name'>
+                <Form.Label>Name</Form.Label>
+                <Form.Control type='name' placeholder='name' value={name} onChange={(e)=>setName(e.target.value)}></Form.Control>
+              </Form.Group>
+              <Form.Group controlId='price'>
+                <Form.Label>Price</Form.Label>
+                <Form.Control type='number' placeholder='price' value={price} onChange={(e)=>setPrice(e.target.value)}></Form.Control>
+              </Form.Group>
+              <Form.Group controlId='image'>
+                <Form.Label>Image</Form.Label>
+                <Form.Control type='text' placeholder='image url' value={image} onChange={(e)=>setImage(e.target.value)}></Form.Control>
+                <Form.File id='image-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                {uploading && <Loader />}
+              </Form.Group>
+              <Form.Group controlId='category'>
+                <Form.Label>Category</Form.Label>
+                <Form.Control type='text' placeholder='category' value={category} onChange={(e)=>setCategory(e.target.value)}></Form.Control>
+              </Form.Group>
+              <Form.Group controlId='countInStock'>
+                <Form.Label>Count in Stock</Form.Label>
+                <Form.Control type='number' placeholder='countInStock' value={countInStock} onChange={(e)=>setCountInStock(e.target.value)}></Form.Control>
+              </Form.Group>
+              <Form.Group controlId='description'>
+                <Form.Label>Description</Form.Label>
+                <Form.Control type='text' placeholder='description' value={description} onChange={(e)=>setDescription(e.target.value)}></Form.Control>
+              </Form.Group>
+              <Button type='submit' variant='primary'>Update</Button>
+            </Form>
+            <h2 className='my-4'>Edit Feature Image</h2>
+            <Form>
+              <Form.Group controlId='featureImage'>
+                <Form.Label>Feature Image</Form.Label>
+                <Form.Control type='text' placeholder='featureImage url' value={featureImage} onChange={(e)=>setFeatureImage(e.target.value)}></Form.Control>
+                <Form.File id='featureImage-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                {uploading && <Loader />}
+              </Form.Group>
+              <Button type='submit' variant='primary'>Update</Button>
+            </Form>
+          </Fragment>)}
       </FormContainer>
     </Fragment>
   )

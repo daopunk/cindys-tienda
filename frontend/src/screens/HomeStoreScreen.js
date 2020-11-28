@@ -1,8 +1,8 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { Row, Col, Nav, Button } from 'react-bootstrap';
 import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
@@ -21,6 +21,11 @@ const HomeScreen = ({ match }) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, pages, page } = productList;
 
+  const [category, setCategory] = useState('');
+  const filteredProducts = products.filter(product => product.category === category);
+
+  const merchandise = category ? category : 'All Merchandise';
+
   useEffect(() => {
     // makes request to the server to get products list
     dispatch(listProducts(keyword, pageNumber));
@@ -29,19 +34,33 @@ const HomeScreen = ({ match }) => {
   return (
     <Fragment>
       <Meta title={"Welcome to Cindy's Tienda"} />
-      {!keyword ? (<ProductCarousel />) : (<Link to='/' className='btn btn-light'>Back</Link>)}
       <Nav>
-        <h1>Latest Products</h1><Route render={({history})=><SearchBox history={history} />} />
+        <Link to='/' ><Button className='btn btn-light my-3 mx-1' onClick={(e)=>setCategory('')}>All</Button></Link>
+        <Button className='btn btn-light my-3 mx-1' value='Art' onClick={(e)=>setCategory(e.target.value)}>Art</Button>
+        <Button className='btn btn-light my-3 mx-1' value='Jewelry' onClick={(e)=>setCategory(e.target.value)}>Jewelry</Button>
+      </Nav>
+      {(!keyword && !category) && (<ProductCarousel />) }
+      <Nav>
+        <h1>{merchandise}</h1><Route render={({history})=><SearchBox history={history} />} />
       </Nav>
       {loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) : 
         (<Fragment>
-          <Row>
-            {products.map((product) =>
-            (<Col key={product._id} sm={12} md={6} lg={4}  xl={3}>
-              <Product product={product}/>
-            </Col>)
-          )}
-          </Row>
+          {!category ?
+            (<Row>
+              {products.map((product) =>
+              (<Col key={product._id} sm={12} md={6} lg={4}  xl={3}>
+                <Product product={product}/>
+              </Col>)
+            )}
+            </Row>) :
+            (<Row>
+              {filteredProducts.map((product) =>
+              (<Col key={product._id} sm={12} md={6} lg={4}  xl={3}>
+                <Product product={product}/>
+              </Col>)
+            )}
+            </Row>)
+          } 
           <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''} />
         </Fragment>)
       }

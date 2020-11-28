@@ -1,7 +1,8 @@
 const products = [
   {
     name: 'Butterfly Giving Birth',
-    image: '/images/one.jpg',
+    image: '',
+    featureImage: '',
     description:
       'Arcylic on Canvas',
     category: 'Art',
@@ -11,7 +12,8 @@ const products = [
   },
   {
     name: 'Butterfly Giving Birth',
-    image: '/images/two.jpg',
+    image: '',
+    featureImage: '',
     description:
       'Arcylic on Canvas',
     category: 'Art',
@@ -21,7 +23,8 @@ const products = [
   },
   {
     name: 'Butterfly Giving Birth',
-    image: './images/three.jpg',
+    image: '',
+    featureImage: '',
     description:
       'Arcylic on Canvas',
     category: 'Art',
@@ -31,7 +34,8 @@ const products = [
   },
   {
     name: 'Butterfly Giving Birth',
-    image: './images/four.jpg',
+    image: '',
+    featureImage: '',
     description:
       'Arcylic on Canvas',
     category: 'Art',
@@ -41,7 +45,8 @@ const products = [
   },
   {
     name: 'Butterfly Giving Birth',
-    image: './images/five.jpg',
+    image: '',
+    featureImage: '',
     description:
       'Arcylic on Canvas',
     category: 'Art',
@@ -51,7 +56,8 @@ const products = [
   },
   {
     name: 'Butterfly Giving Birth',
-    image: './images/six.jpg',
+    image: '',
+    featureImage: '',
     description:
       'Arcylic on Canvas',
     category: 'Art',
@@ -61,7 +67,8 @@ const products = [
   },
   {
     name: 'Butterfly Giving Birth',
-    image: './images/seven.jpg',
+    image: '',
+    featureImage: '',
     description:
       'Arcylic on Canvas',
     category: 'Art',
