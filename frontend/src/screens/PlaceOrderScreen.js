@@ -6,7 +6,7 @@ import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import Meta from '../components/Meta';
 import { createOrder } from '../actions/orderActions';
-import { listAllProducts, listProductDetails, updateStock, updateProduct } from '../actions/productActions';
+import { listAllProducts, updateStock } from '../actions/productActions';
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
