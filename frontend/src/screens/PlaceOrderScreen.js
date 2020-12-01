@@ -6,9 +6,13 @@ import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import Meta from '../components/Meta';
 import { createOrder } from '../actions/orderActions';
+import { listAllProducts, listProductDetails, updateStock, updateProduct } from '../actions/productActions';
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
+
+  const productListAll = useSelector((state) => state.productListAll);
+  const { products } = productListAll;
 
   const cart = useSelector((state)=> state.cart);
   const cs = cart.shippingAddress;
@@ -24,12 +28,39 @@ const PlaceOrderScreen = ({ history }) => {
   const { order, success, error } = orderCreate;
 
   useEffect(() => {
+    dispatch(listAllProducts());
     if (success) {
       history.push(`/order/${order._id}`);
     }
-  }, [history, success]);
+  }, [dispatch, history, success]);
 
-  const placeOrderHandler = (e) => {
+  const adjustStock = () => {
+    let adjustedStock = [];
+    let adjustedState = [];
+
+    cart.cartItems.map((item)=>{
+      const item_id = item.product;
+      const updatedQty = item.countInStock - item.qty;
+      adjustedStock.push({item_id, updatedQty});
+      return adjustedStock;
+    });
+    
+    adjustedStock.forEach((item)=>{
+      products.map((product)=>{
+        if (item.item_id === product._id) {
+          product.countInStock = item.updatedQty;
+          adjustedState.push({_id: product._id, countInStock: product.countInStock});
+        }
+      });
+      return adjustedState;
+    });
+
+    adjustedState.forEach((item)=>{
+      dispatch(updateStock({ _id: item._id, countInStock: item.countInStock }));
+    });
+  }
+
+  const placeOrderHandler = () => {
     dispatch(createOrder({
       orderItems: cart.cartItems,
       shippingAddress: cart.shippingAddress,
@@ -39,7 +70,11 @@ const PlaceOrderScreen = ({ history }) => {
       taxPrice: cart.taxPrice,
       totalPrice: cart.totalPrice
     }));
+    adjustStock();
+    localStorage.cartItems = [];
+    cart.cartItems = [];
   }
+
 
   return (
     <Fragment>

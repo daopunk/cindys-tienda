@@ -26,10 +26,6 @@ const OrderListScreen = ({ history }) => {
     }
   }, [dispatch, history, userInfo]);
 
-  const refreshPage = () => {
-    window.location.reload(true);
-  }
-
   return (
     <Fragment>
       <Meta />
@@ -38,19 +34,23 @@ const OrderListScreen = ({ history }) => {
         <Table striped bordered hover responsive className='table-sm'>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>ORDER</th>
               <th>USER</th>
               <th>DATE</th>
               <th>TOTAL</th>
               <th>PAID</th>
               <th>DELIVERED</th>
-              <th></th>
+              <th>ID</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order)=> (
               <tr key={order._id}>
-                <td>{order._id}</td>
+                <td>
+                  <LinkContainer to={`/order/${order._id}`}>
+                    <Button className='btn-sm' variant='light'>Details</Button>
+                  </LinkContainer>
+                </td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>${order.totalPrice}</td>
@@ -60,11 +60,7 @@ const OrderListScreen = ({ history }) => {
                 <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : (
                   <i className='fas fa-times' style={{color: '#FF0000'}}></i>
                 )}</td>
-                <td>
-                  <LinkContainer to={`/order/${order._id}`}>
-                    <Button className='btn-sm' variant='light' onClick='refreshPage' >Details</Button>
-                  </LinkContainer>
-                </td>
+                <td>{order._id}</td>
               </tr>
             ))}
           </tbody>

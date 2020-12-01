@@ -7,7 +7,6 @@ import { listOrders } from '../actions/orderActions';
 import Meta from '../components/Meta';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-
 import { USER_UPDATE_RESET } from '../constants/userConstants';
 
 const ProfileScreen = ({ location, history }) => {
@@ -91,17 +90,21 @@ const ProfileScreen = ({ location, history }) => {
         errorOrders ? (<Message variant='danger'>{errorOrders}</Message>) :
         (<Table striped bordered hover responsive className='table-sm' >
           <tr>
-            <th>ID</th>
+            <th>Order</th>
             <th>DATE</th>
             <th>TOTAL</th>
             <th>PAID</th>
             <th>DELIVERED</th>
-            <th></th>
+            <th>ID</th>
           </tr>
           <tbody>
             {orders.map((order)=>(
               <tr key={order._id}>
-                <td>{order._id}</td>
+                <td>
+                  <LinkContainer to={`/order/${order._id}`}>
+                    <Button className='btn-sm' variant='light'>Details</Button>
+                  </LinkContainer>
+                </td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>{order.totalPrice}</td>
                 <td>{order.isPaid ? order.paidAt.substring(0, 10) : (
@@ -110,11 +113,7 @@ const ProfileScreen = ({ location, history }) => {
                 <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : (
                   <i className='fas fa-times' style={{color: '#FF0000'}}></i>
                 )}</td>
-                <td>
-                  <LinkContainer to={`/order/${order._id}`}>
-                    <Button className='btn-sm' variant='light'>Details</Button>
-                  </LinkContainer>
-                </td>
+                <td>{order._id}</td>
               </tr>
             ))}
           </tbody>

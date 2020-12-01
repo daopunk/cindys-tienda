@@ -21,6 +21,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [category, setCategory] = useState('');
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState('');
+  const [rating, setRating] = useState(0);
   const [uploading, setUploading] = useState(false);
 
   const productDetails = useSelector((state)=> state.productDetails);
@@ -44,6 +45,7 @@ const ProductEditScreen = ({ match, history }) => {
         setCategory(product.category);
         setCountInStock(product.countInStock);
         setDescription(product.description);
+        setRating(product.rating);
       }
     }
   }, [dispatch, productId, product, history, successUpdate]);
@@ -54,7 +56,7 @@ const ProductEditScreen = ({ match, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateProduct({ _id: productId, name, description, price, image, category, countInStock }));
+    dispatch(updateProduct({ _id: productId, name, description, price, rating, image, featureImage, category, countInStock }));
     dispatch(listProductDetails(productId));
     refreshPage();
   }
@@ -69,6 +71,23 @@ const ProductEditScreen = ({ match, history }) => {
       const { data } = await axios.post('/api/upload', formData, config);
 
       setImage(data);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
+  }
+
+  const uploadFileHandlerTwo = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('image', file);
+    setUploading(true);
+    try {
+      const config = { headers: { 'Content-Type': 'multipart/form-data' } }
+      const { data } = await axios.post('/api/upload', formData, config);
+
+      setFeatureImage(data);
       setUploading(false);
     } catch (error) {
       console.error(error);
@@ -113,14 +132,18 @@ const ProductEditScreen = ({ match, history }) => {
                 <Form.Label>Description</Form.Label>
                 <Form.Control type='text' placeholder='description' value={description} onChange={(e)=>setDescription(e.target.value)}></Form.Control>
               </Form.Group>
+              <Form.Group controlId='rating'>
+                <Form.Label>Rating</Form.Label>
+                <Form.Control type='number' placeholder='rating' value={rating} onChange={(e)=>setRating(e.target.value)}></Form.Control>
+              </Form.Group>
               <Button type='submit' variant='primary'>Update</Button>
             </Form>
             <h2 className='my-4'>Edit Feature Image</h2>
-            <Form>
+            <Form onSubmit={submitHandler}>
               <Form.Group controlId='featureImage'>
                 <Form.Label>Feature Image</Form.Label>
                 <Form.Control type='text' placeholder='featureImage url' value={featureImage} onChange={(e)=>setFeatureImage(e.target.value)}></Form.Control>
-                <Form.File id='featureImage-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                <Form.File id='featureImage-file' label='Choose File' custom onChange={uploadFileHandlerTwo}></Form.File>
                 {uploading && <Loader />}
               </Form.Group>
               <Button type='submit' variant='primary'>Update</Button>

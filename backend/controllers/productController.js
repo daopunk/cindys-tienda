@@ -5,12 +5,12 @@ import CT_Product from '../models/productModel.js';
 // @route: GET /api/products
 // @access: public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 10;
+  const pageSize = 12;
   const page = Number(req.query.pageNumber) || 1;
 
   const keyword = req.query.keyword ? { name: { $regex: req.query.keyword, $options: 'i' } } : {};
 
-  const count = await CT_Product.countDocuments({ ...keyword });
+  const count = await CT_Product.countDocuments({...keyword});
 
   const products = await CT_Product.find({...keyword}).limit(pageSize).skip(pageSize * (page - 1));
 
@@ -58,7 +58,8 @@ const createProduct = asyncHandler(async (req, res) => {
     featureImage: '/images/sample.jpeg',
     category: 'Sample category',
     countInStock: 0,
-    description: 'Sample desc'
+    description: 'Sample desc',
+    rating: 0
   });
 
   const createdProduct = await product.save();
@@ -69,7 +70,7 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route: PUT /api/products/:id
 // @access: private/admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, image, featureImage, category, countInStock } = req.body;
+  const { name, price, description, image, featureImage, category, countInStock, rating } = req.body;
 
   const product = await CT_Product.findById(req.params.id);
 
@@ -81,9 +82,29 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.featureImage = featureImage;
     product.category = category;
     product.countInStock = countInStock;
+    product.rating = rating;
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);
+  } else {
+    res.status(404);
+    throw new Error('Product not found');
+  }
+});
+
+// @desc: update stock of a product
+// @route: PUT /api/products/:id
+// @access: private
+const updateStock = asyncHandler(async (req, res) => {
+  const { countInStock } = req.body;
+
+  const product = await CT_Product.findById(req.params.id);
+
+  if (product) {
+    product.countInStock = countInStock;
+
+    const updatedStock = await product.save();
+    res.json(updatedStock);
   } else {
     res.status(404);
     throw new Error('Product not found');
@@ -99,4 +120,14 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.json(products);
 });
 
-export { getProducts, getProductById, deleteProduct, createProduct, updateProduct, getTopProducts }
+// @desc: get all products
+// @route: PUT /api/products/category
+// @access: public
+const getAllProducts = asyncHandler(async (req, res) => {
+  const products = await CT_Product.find({});
+  const category = req.query.category ? { name: { $regex: req.query.category, $options: 'i' } } : {};
+
+  res.json({ products, category });
+});
+
+export { getProducts, getProductById, deleteProduct, createProduct, updateProduct, updateStock, getTopProducts, getAllProducts }

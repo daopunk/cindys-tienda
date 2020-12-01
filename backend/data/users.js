@@ -2,20 +2,21 @@ import bycrypt from 'bcryptjs';
 
 const users = [
   {
-    name: 'Admin User',
+    name: 'TEST_ADMIN',
     email: 'admin@example.com',
-    password: bycrypt.hashSync('1234', 10),
+    password: bycrypt.hashSync('123', 10),
     isAdmin: true
   },
   {
-    name: 'John Dowd',
-    email: 'john@example.com',
-    password: bycrypt.hashSync('1234', 10)
+    name: 'Cindita',
+    email: 'cindymaci010@gmail.com',
+    password: bycrypt.hashSync('12345', 10),
+    isAdmin: true
   },
   {
-    name: 'Jane Dowd',
-    email: 'jane@example.com',
-    password: bycrypt.hashSync('1234', 10)
+    name: 'Hunter',
+    email: 'hking6776@gmail.com',
+    password: bycrypt.hashSync('123456', 10)
   }
 ]
 

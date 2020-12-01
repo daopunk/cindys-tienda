@@ -26,16 +26,32 @@ h3 {
 .carousel-item.active {
   display: flex;
 }
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+
 .carousel-caption {
   position: absolute;
-  top: 0;
+  bottom: 0;
 }
 
 .carousel-indicators li {
   background-color: #777;
 }
 
-.carousel img {
+.details-carousel {
+  height: 250px;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 50px;
+  border-radius: 5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ad-carousel-img {
   height: 250px;
   padding: 10px;
   margin-top: 5px;
@@ -48,6 +64,7 @@ h3 {
 .carousel a {
   margin: 0 auto;
 }
+
 @media (max-width: 900px) {
   .carousel-caption h2 {
     font-size: 2.5vw;

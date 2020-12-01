@@ -5,6 +5,7 @@ import { Row, Col, ListGroup, Image, Form, Button } from 'react-bootstrap';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import { ORDER_LIST_RESET } from '../constants/orderConstants';
 
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
@@ -27,8 +28,9 @@ const CartScreen = ({ match, location, history }) => {
   }
 
   const checkoutHandler = () => {
-    // (!logged in) ? login : shipping
     history.push('/login?redirect=shipping');
+    dispatch({ type: ORDER_LIST_RESET });
+    window.location.reload(true);
   }
 
   return (
@@ -36,7 +38,7 @@ const CartScreen = ({ match, location, history }) => {
       <Meta />
       <Col md={8}>
         <h1>Shopping Cart</h1>
-        {cartItems.length === 0 ? <Message>Cart is empty <Link to='/'>Back</Link></Message> : 
+        {cartItems.length === 0 ? <Message>Cart is empty <Link to='/tienda'>Back</Link></Message> : 
         (<ListGroup variant='flush'>
           {cartItems.map(item => (
             <ListGroup.Item key={item.product}>
@@ -72,16 +74,17 @@ const CartScreen = ({ match, location, history }) => {
             ${cartItems.reduce((acc,cur)=> acc+cur.qty * cur.price, 0).toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
+              <Link to={`/tienda`}><Button type='button' className='btn-block'>Continue Shopping</Button></Link>
+            </ListGroup.Item>
+            <ListGroup.Item>
               <Button type='button' className='btn-block' 
                 disabled={cartItems.length === 0} onClick={checkoutHandler}>Proceed to Checkout</Button>
             </ListGroup.Item>
         </ListGroup>
-      </Col>
-      <Col md={2}>
-      
       </Col>
     </Row>
   )
 }
 
 export default CartScreen
+

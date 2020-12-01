@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap';
+import { Row, Col, Image, ListGroup, Card, Button, Form, Carousel } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
@@ -25,11 +25,20 @@ const ProductScreen = ({ match, history }) => {
 
   return (
     <Fragment>
-      <Link className='btn btn-light my-3' to='/'>Back</Link>
+      <Link className='btn btn-light my-3' to='/tienda'>Back</Link>
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <Row>
           <Meta title={product.name} />
-          <Col md={6}><Image src={product.image} alt={product.name} fluid /></Col>
+          <Col md={6}>
+          <Carousel pause='hover' className='bg-light'>
+            <Carousel.Item key={product._id}>
+              <Image className="details-carousel-img" src={product.image} alt={product.name} fluid />
+            </Carousel.Item>
+            <Carousel.Item key={product._id}>
+                <Image className="details-carousel-img" src={product.featureImage} alt={product.name} fluid />
+            </Carousel.Item>
+          </Carousel>
+          </Col>
           <Col md={3}>
             <ListGroup variant='flush'>
               <ListGroup.Item>
@@ -39,11 +48,11 @@ const ProductScreen = ({ match, history }) => {
                 <strong>Category: </strong>{product.category}
               </ListGroup.Item>
               <ListGroup.Item>
-                Price: ${product.price}
+                <strong>Price: </strong>${product.price}
               </ListGroup.Item>
-              <ListGroup.Item>
-                Description: {product.description}
-              </ListGroup.Item>
+              {product.description && (<ListGroup.Item>
+                <strong>Description: </strong><br/>{product.description}
+              </ListGroup.Item>)}
             </ListGroup>
           </Col>
           <Col md={3}>
