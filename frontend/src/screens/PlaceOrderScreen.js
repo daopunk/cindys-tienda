@@ -75,7 +75,6 @@ const PlaceOrderScreen = ({ history }) => {
     cart.cartItems = [];
   }
 
-
   return (
     <Fragment>
       <Meta />
