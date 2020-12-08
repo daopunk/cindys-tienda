@@ -33,12 +33,13 @@ const CartScreen = ({ match, location, history }) => {
     window.location.reload(true);
   }
 
+  
   return (
     <Row>
       <Meta />
       <Col md={8}>
         <h1>Shopping Cart</h1>
-        {cartItems.length === 0 ? <Message>Cart is empty <Link to='/tienda'>Back</Link></Message> : 
+        {cartItems.length === 0 ? <Message>Cart is empty  |<Link to='/tienda' style={{color: "#000000"}}><strong>Back</strong></Link></Message> : 
         (<ListGroup variant='flush'>
           {cartItems.map(item => (
             <ListGroup.Item key={item.product}>

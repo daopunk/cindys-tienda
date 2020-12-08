@@ -7,8 +7,10 @@ const Footer = () => {
       <Container>
         <Row>
           <Col className='text-center py-3'>
-            Copyright &copy; Cindys Tienda
+            Cindy's Tienda &copy; 2020  |
+            <a href='https://hunterking.info/' target='_blank' >  Designed by Hunter</a>
           </Col>
+
         </Row>
       </Container>
     </footer>

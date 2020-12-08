@@ -28,9 +28,9 @@ const CategoryStoreScreen = () => {
       <Meta title={"Welcome to Cindy's Tienda"} />
       <Nav>
         <Link to='/tienda' ><Button className='btn btn-light my-3 mx-1'>All</Button></Link>
-        <Link to={`/tienda/category?Paintings`} ><Button className='btn btn-light my-3 mx-1'>Paintings</Button></Link>
         <Link to={`/tienda/category?Collages`} ><Button className='btn btn-light my-3 mx-1'>Collages</Button></Link>
         <Link to={`/tienda/category?Earrings`} ><Button className='btn btn-light my-3 mx-1'>Earrings</Button></Link>
+        <Link to={`/tienda/category?Paintings`} ><Button className='btn btn-light my-3 mx-1'>Paintings</Button></Link>
       </Nav> 
       <Fragment>
         <h1>{category}</h1>

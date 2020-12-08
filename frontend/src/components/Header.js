@@ -1,9 +1,9 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, Container, NavDropdown, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../actions/userActions';
-
+import fireMoon from '../images/fireMoon.png';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,12 +16,19 @@ const Header = () => {
     localStorage.cartItems = [];
   }
 
+  const logoStyle = {
+    height: "3rem"
+  }
+
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>Cindita</Navbar.Brand>
+            <Navbar.Brand><Image src={fireMoon} style={logoStyle} alt='Fire Moon' /></Navbar.Brand>
+          </LinkContainer>
+          <LinkContainer to='/'>
+            <Navbar.Brand>CINDITA'S TIENDITA</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>

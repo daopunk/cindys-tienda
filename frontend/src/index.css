@@ -4,12 +4,89 @@ main {
 
 h1 {
   font-size: 1.8rem;
-  padding: 1rem 0;
+}
+
+.main-title-container {
+  text-align: center;
+  position: relative;
+  margin: 3.5rem 0 3.5rem 0;
+}
+
+.main-title {
+  display: inline-block;
+  text-align: center;
+  font-weight: 500;
+  font-size: 4.5rem;
+  color: #333;
+  padding: 0 .25rem 0 1.5rem;
+  transform: scaleY(1.2);
+}
+
+.main-sub-title {
+  display: inline-block;
+  text-align: center;
+  font-weight: 500;
+  font-size: 3rem;
+  color: #333;
+  transform: scaleY(1.1);
+  margin-left: 1.5rem;
+}
+
+.fa-circle {
+  display: inline-block;
+  text-align: center;
+  position: absolute;
+  top: 2.4rem;
+  font-size: 1rem;
+}
+
+.mainBackground {
+  margin: 3rem 0 1rem 0;
+  border: 1px solid #333;
+  width: 100%;
+  image-rendering: auto;
+  filter: saturate(110%);
+  position: relative;
+}
+
+.main-bio-container {
+  margin: 0 auto 2.5rem auto;
+  text-align: center;
+}
+
+.main-bbypic {
+  border: 1px solid #333;
+  display: inline-block;
+  height: 10rem;
+  margin: 0 1rem 0 0;
+}
+
+.main-adultPic {
+  border: 1px solid #333;
+  display: inline-block;
+  height: 10rem;
+  margin: 0 0 0 1rem;
+}
+
+.main-bio {
+  padding: 1rem;
+  margin: 0 3% 5rem 3%;
+  text-align: center;
+  font-size: 1rem;
+  transform: scaleY(1.1);
+}
+
+.shop {
+  padding: 1rem;
 }
 
 h2 {
-  font-size: 1.4rem;
-  padding: 0.5rem 0;
+  font-size: 1.3rem;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  font-weight: 300;
 }
 
 h3 {
@@ -21,10 +98,17 @@ h3 {
 }
 
 /* carousel */
+.ad-container {
+  width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .carousel-item-next,
 .carousel-item-prev,
 .carousel-item.active {
   display: flex;
+  background-color: #fff;
 }
 
 .carousel-control-next,
@@ -32,33 +116,43 @@ h3 {
     filter: invert(100%);
 }
 
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-}
-
 .carousel-indicators li {
   background-color: #777;
 }
 
-.details-carousel {
-  height: 250px;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 50px;
-  border-radius: 5%;
-  margin-left: auto;
-  margin-right: auto;
+.ad-carousel-img {
+  display: inline-block;
+  height: 17rem;
+  margin-bottom: 2.5rem;
+  margin-right: 8rem;
+  border: 1px solid #D9D0BF;
 }
 
-.ad-carousel-img {
-  height: 250px;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 50px;
-  border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
+.ad-carousel-desc-container {
+  display: inline-block;
+  text-align: right;
+  padding-right: 1.5rem;
+  width: 17rem;
+  height: 17rem;
+  color: #333;
+  background-image: url('images/fireMoon.png');
+  margin-bottom: 2.5rem;
+  margin-left: 8rem;
+}
+
+.ad-h1 {
+  padding-top: 2rem;
+  transform: scaleY(1.2);
+  padding-bottom: .5rem;
+}
+
+.ad-p {
+  transform: scaleY(1.2);
+}
+
+.ad-h2 {
+  font-size: 1.4rem;
+  transform: scaleY(1.2);
 }
 
 .carousel a {
@@ -69,4 +163,8 @@ h3 {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
+}
+
+.card-title {
+  color: #333;
 }

@@ -4,21 +4,18 @@ import { Card } from 'react-bootstrap';
 
 const Product = ({ product }) => {
   return (
-    <Card className='my-3 p-3 rounded'>
+    <Card className='my-4 p-1 rounded' style={{border: 'none', textAlign: 'center'}}>
       <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} variant='top' />
+        <Card.Img style={{border: "1px solid #D9D0BF"}} src={product.image} variant='top' />
       </Link>
       <Card.Body>
         <Link to={`/product/${product._id}`}>
-          <Card.Title as='div'>
-            <strong>{product.name}</strong>
+          <Card.Title as='h2'>
+            {product.name}
           </Card.Title>
         </Link>
-        <Card.Text as='div'>
-          <p>{product.description}</p>
-        </Card.Text>
-        <Card.Text as='h3'>
-          <div>${product.price}</div>
+        <Card.Text className='product-price'>
+          <div>$ {product.price}.00</div>
         </Card.Text>
       </Card.Body>
     </Card>
@@ -26,3 +23,7 @@ const Product = ({ product }) => {
 }
 
 export default Product
+
+{/* <Card.Text as='div'>
+<p>{product.description}</p>
+</Card.Text> */}

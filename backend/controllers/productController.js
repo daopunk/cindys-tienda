@@ -115,7 +115,7 @@ const updateStock = asyncHandler(async (req, res) => {
 // @route: PUT /api/products/top
 // @access: private/admin
 const getTopProducts = asyncHandler(async (req, res) => {
-  const products = await CT_Product.find({}).sort({ rating: -1 }).limit(3);
+  const products = await CT_Product.find({}).sort({ rating: -1 }).limit(5);
 
   res.json(products);
 });
