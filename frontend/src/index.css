@@ -142,7 +142,7 @@ h3 {
 
 .ad-h1 {
   padding-top: 2rem;
-  transform: scaleY(1.2);
+  transform: scaleY(1.1);
   padding-bottom: .5rem;
 }
 
@@ -152,7 +152,7 @@ h3 {
 
 .ad-h2 {
   font-size: 1.4rem;
-  transform: scaleY(1.2);
+  transform: scaleY(1.1);
 }
 
 .carousel a {
