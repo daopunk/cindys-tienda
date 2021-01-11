@@ -32,9 +32,9 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='ml-auto'>
-            <LinkContainer to='/tienda'>
-                <Nav.Link><i className='fas fa-store'/> Tienda</Nav.Link>
+            <Nav className='ml-auto text-right'>
+            <LinkContainer to='/about'>
+                <Nav.Link><i className='fas fa-store'/> About</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/cart'>
                 <Nav.Link><i className='fas fa-shopping-cart'/> Cart</Nav.Link>

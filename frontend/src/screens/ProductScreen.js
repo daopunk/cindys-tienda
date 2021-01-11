@@ -25,7 +25,7 @@ const ProductScreen = ({ match, history }) => {
 
   return (
     <Fragment>
-      <Link className='btn btn-light my-3' to='/tienda'>Back</Link>
+      <Link className='btn btn-light my-3' to='/'>Back</Link>
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <Row>
           <Meta title={product.name} />

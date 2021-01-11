@@ -12,7 +12,7 @@ const Meta = ({ title, desc, keywords }) => {
 }
 
 Meta.defaultProps = {
-  title: 'Cindy Macias | Organizer',
+  title: 'Cindita\'s Tiendita',
   desc: 'Cindy\'s art, activism, and craft store',
   keywords: 'Cindy\'s Tienda, Community Activist, Hip Hop'
 }

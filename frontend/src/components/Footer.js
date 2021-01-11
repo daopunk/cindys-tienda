@@ -7,8 +7,8 @@ const Footer = () => {
       <Container>
         <Row>
           <Col className='text-center py-3'>
-            Cindy's Tienda &copy; 2020  |
-            <a href='https://hunterking.info/' target='_blank' >  Designed by Hunter</a>
+            Cindita's Tiendita &copy; 2021  |
+            <a href='https://hunterking.info/' target='_blank' >  Designed by Hunter King</a>
           </Col>
 
         </Row>

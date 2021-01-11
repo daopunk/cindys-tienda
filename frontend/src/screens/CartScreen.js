@@ -39,7 +39,7 @@ const CartScreen = ({ match, location, history }) => {
       <Meta />
       <Col md={8}>
         <h1>Shopping Cart</h1>
-        {cartItems.length === 0 ? <Message>Cart is empty  |<Link to='/tienda' style={{color: "#000000"}}><strong>Back</strong></Link></Message> : 
+        {cartItems.length === 0 ? <Message>Cart is empty  |<Link to='/' style={{color: "#000000"}}><strong>Back</strong></Link></Message> : 
         (<ListGroup variant='flush'>
           {cartItems.map(item => (
             <ListGroup.Item key={item.product}>
@@ -75,7 +75,7 @@ const CartScreen = ({ match, location, history }) => {
             ${cartItems.reduce((acc,cur)=> acc+cur.qty * cur.price, 0).toFixed(2)}
             </ListGroup.Item>
             <ListGroup.Item>
-              <Link to={`/tienda`}><Button type='button' className='btn-block'>Continue Shopping</Button></Link>
+              <Link to={`/`}><Button type='button' className='btn-block'>Continue Shopping</Button></Link>
             </ListGroup.Item>
             <ListGroup.Item>
               <Button type='button' className='btn-block' 

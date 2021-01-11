@@ -23,15 +23,19 @@ const CategoryStoreScreen = () => {
     dispatch(listAllProducts());
   }, [dispatch]);
 
+  const searchHeader = (
+    <Nav>
+      <Link to='/' ><Button className='btn btn-dark my-3 mx-1'>All</Button></Link>
+      <Link to={`/category?Collages`} ><Button className='btn btn-dark my-3 mx-1'>Collages</Button></Link>
+      <Link to={`/category?Earrings`} ><Button className='btn btn-dark my-3 mx-1'>Earrings</Button></Link>
+      <Link to={`/category?Paintings`} ><Button className='btn btn-dark my-3 mx-1'>Paintings</Button></Link>
+    </Nav>);
+
   return (
     <Fragment>
       <Meta title={"Welcome to Cindy's Tienda"} />
-      <Nav>
-        <Link to='/tienda' ><Button className='btn btn-light my-3 mx-1'>All</Button></Link>
-        <Link to={`/tienda/category?Collages`} ><Button className='btn btn-light my-3 mx-1'>Collages</Button></Link>
-        <Link to={`/tienda/category?Earrings`} ><Button className='btn btn-light my-3 mx-1'>Earrings</Button></Link>
-        <Link to={`/tienda/category?Paintings`} ><Button className='btn btn-light my-3 mx-1'>Paintings</Button></Link>
-      </Nav> 
+      { searchHeader }
+      <hr/>
       <Fragment>
         <h1>{category}</h1>
         {loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) :
@@ -43,6 +47,11 @@ const CategoryStoreScreen = () => {
           )}
           </Row>)}
       </Fragment>
+      <div style={{margin:"3rem 0 3rem 0"}} >
+          <h4 style={{margin:"1rem 0 1rem 1rem"}}>All merchandise is hand-crafted by Cindy Macias</h4>
+          <hr/>
+          { searchHeader }
+      </div>
     </Fragment>
   )
 }

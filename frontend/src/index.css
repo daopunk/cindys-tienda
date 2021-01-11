@@ -2,14 +2,22 @@ main {
   min-height: 80vh;
 }
 
+hr {
+  background-color: #333;
+}
+
 h1 {
   font-size: 1.8rem;
+}
+
+.main-storebanner {
+  margin: 1rem;
 }
 
 .main-title-container {
   text-align: center;
   position: relative;
-  margin: 3.5rem 0 3.5rem 0;
+  margin: 1.5rem 0 2rem 0;
 }
 
 .main-title {
@@ -40,42 +48,6 @@ h1 {
   font-size: 1rem;
 }
 
-.mainBackground {
-  margin: 3rem 0 1rem 0;
-  border: 1px solid #333;
-  width: 100%;
-  image-rendering: auto;
-  filter: saturate(110%);
-  position: relative;
-}
-
-.main-bio-container {
-  margin: 0 auto 2.5rem auto;
-  text-align: center;
-}
-
-.main-bbypic {
-  border: 1px solid #333;
-  display: inline-block;
-  height: 10rem;
-  margin: 0 1rem 0 0;
-}
-
-.main-adultPic {
-  border: 1px solid #333;
-  display: inline-block;
-  height: 10rem;
-  margin: 0 0 0 1rem;
-}
-
-.main-bio {
-  padding: 1rem;
-  margin: 0 3% 5rem 3%;
-  text-align: center;
-  font-size: 1rem;
-  transform: scaleY(1.1);
-}
-
 .shop {
   padding: 1rem;
 }
@@ -102,13 +74,18 @@ h3 {
   width: 50rem;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 1.5rem;
+  padding-top: .5rem;
 }
 
 .carousel-item-next,
 .carousel-item-prev,
 .carousel-item.active {
   display: flex;
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-image: url('./images/140921.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .carousel-control-next,
@@ -123,6 +100,7 @@ h3 {
 .ad-carousel-img {
   display: inline-block;
   height: 17rem;
+  margin-top: 1rem;
   margin-bottom: 2.5rem;
   margin-right: 8rem;
   border: 1px solid #D9D0BF;
@@ -159,12 +137,98 @@ h3 {
   margin: 0 auto;
 }
 
+.card-title {
+  color: #333;
+}
+
 @media (max-width: 900px) {
   .carousel-caption h2 {
     font-size: 2.5vw;
   }
 }
 
-.card-title {
-  color: #333;
+/* about section */
+.about-sections {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-texts {
+  font-size: 1.2rem;
+  line-height: 1.9rem;
+}
+
+.about-icons {
+  text-align: center;
+  margin: 2rem 0 2rem 2rem;
+}
+
+.about-pic-sec-1 {
+  margin: 0 2rem 0 2rem;
+  background-image: url(./images/cindyBby.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; 
+}
+
+.about-pic-sec-2 {
+  margin: 0 2rem 0 2rem;
+  background-image: url(./images/cindyAdult.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; 
+}
+
+.about-pic-sec-3 {
+  margin: 0 2rem 0 2rem;
+  background-image: url(./images/fireMoon.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; 
+}
+
+.about-pic {
+  width: 4rem;
+}
+
+.about-icon-1 {
+  height: 8rem;
+  width: 8rem;
+  border: 1px solid #777;
+  border-radius: 50%;
+  background-image: url(./images/icon-collage.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; 
+}
+
+.about-icon-2 {
+  height: 8rem;
+  width: 8rem;
+  border: 1px solid #777;
+  border-radius: 50%;
+  background-image: url(./images/icon-earring.JPG);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; 
+}
+
+.about-icon-3 {
+  height: 8rem;
+  width: 8rem;
+  border: 1px solid #777;
+  border-radius: 50%;
+  background-image: url(./images/icon-painting.JPG);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center; 
+}
+
+.row {
+  padding: 3rem 0 3rem 0;
+}
+
+.col {
+  padding: 0 2rem 0 2rem;
 }
