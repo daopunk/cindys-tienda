@@ -1,12 +1,13 @@
 import React, { useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Nav, Button } from 'react-bootstrap';
+import { Row, Col, Nav, Button, Image } from 'react-bootstrap';
 import Product from '../components/Product';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { listAllProducts } from '../actions/productActions';
+import hand_heart from '../images/hand_heart.png';
 
 const CategoryStoreScreen = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,10 @@ const CategoryStoreScreen = () => {
 
   const searchHeader = (
     <Nav>
-      <Link to='/' ><Button className='btn btn-dark my-3 mx-1'>All</Button></Link>
-      <Link to={`/category?Collages`} ><Button className='btn btn-dark my-3 mx-1'>Collages</Button></Link>
-      <Link to={`/category?Earrings`} ><Button className='btn btn-dark my-3 mx-1'>Earrings</Button></Link>
-      <Link to={`/category?Paintings`} ><Button className='btn btn-dark my-3 mx-1'>Paintings</Button></Link>
+      <Link to='/' ><Button className='btn btn-dark my-2 mr-1'>All</Button></Link>
+      <Link to={`/category?Collages`} ><Button className='btn btn-dark my-2 mr-1'>Collages</Button></Link>
+      <Link to={`/category?Earrings`} ><Button className='btn btn-dark my-2 mr-1'>Earrings</Button></Link>
+      <Link to={`/category?Paintings`} ><Button className='btn btn-dark my-2 mr-1'>Paintings</Button></Link>
     </Nav>);
 
   return (
@@ -41,14 +42,17 @@ const CategoryStoreScreen = () => {
         {loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) :
           (<Row>
             {filteredProducts.map((product)=>
-            (<Col key={product._id} sm={12} md={6} lg={4}  xl={3}>
+            (<Col key={product._id} sm={6} md={6} lg={4}  xl={3}>
               <Product product={product}/>
             </Col>)
           )}
           </Row>)}
       </Fragment>
-      <div style={{margin:"3rem 0 3rem 0"}} >
-          <h4 style={{margin:"1rem 0 1rem 1rem"}}>All merchandise is hand-crafted by Cindy Macias</h4>
+      <div style={{textAlign:"center"}}>
+        <Image style={{width:"10rem"}} src={hand_heart} alt="hand and heart" />
+      </div>
+      <div style={{margin:"1.5rem 0 1.5rem 0"}} >
+          <h4 style={{margin:"0 0 1rem .5rem"}}>all merchandise is hand-crafted by cindy macias</h4>
           <hr/>
           { searchHeader }
       </div>

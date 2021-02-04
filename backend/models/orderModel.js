@@ -9,8 +9,10 @@ const orderSchema = mongoose.Schema({
   orderItems: [{
     name: { type: String, required: true },
     qty: { type: Number, required: true },
-    image: { type: String, required: true },
+    image1: { type: String, required: true },
     price: { type: Number, required: true },
+    shipping: { type: Number, required: true },
+    selectedOption: { type: String, required: false },
     product: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'CT_Product' }
   }],
   shippingAddress: {

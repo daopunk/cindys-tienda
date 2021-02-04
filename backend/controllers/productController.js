@@ -53,13 +53,22 @@ const createProduct = asyncHandler(async (req, res) => {
   const product = new CT_Product({
     name: 'Sample name',
     price: 0,
+    shipping: 0,
     user: req.user._id,
-    image: '/images/sample.jpg',
-    featureImage: '/images/sample.jpeg',
+    image1: '/images/sample.jpg',
+    image2: '',
+    image3: '',
+    image4: '',
+    image5: '',
     category: 'Sample category',
     countInStock: 0,
     description: 'Sample desc',
-    rating: 0
+    rating: 0,
+    option1: '',
+    option2: '',
+    option3: '',
+    option4: '',
+    selectedOption: ''
   });
 
   const createdProduct = await product.save();
@@ -70,19 +79,27 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route: PUT /api/products/:id
 // @access: private/admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, image, featureImage, category, countInStock, rating } = req.body;
+  const { name, price, shipping, description, image1, image2, image3, image4, image5, category, countInStock, rating, option1, option2, option3, option4, selectedOption } = req.body;
 
   const product = await CT_Product.findById(req.params.id);
 
   if (product) {
     product.name = name;
     product.price = price;
+    product.shipping = shipping;
     product.description = description;
-    product.image = image;
-    product.featureImage = featureImage;
+    product.image1 = image1;
+    product.image2 = image2;
+    product.image3 = image3;
+    product.image4 = image4;
+    product.image5 = image5;
     product.category = category;
     product.countInStock = countInStock;
     product.rating = rating;
+    product.option1 = option1;
+    product.option2 = option2;
+    product.option3 = option3;
+    product.option4 = option4;
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);

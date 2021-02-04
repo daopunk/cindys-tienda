@@ -10,11 +10,23 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  image: {
+  image1: {
     type: String,
     required: false
   },
-  featureImage: {
+  image2: {
+    type: String,
+    required: false
+  },
+  image3: {
+    type: String,
+    required: false
+  },
+  image4: {
+    type: String,
+    required: false
+  },
+  image5: {
     type: String,
     required: false
   },
@@ -36,10 +48,31 @@ const productSchema = mongoose.Schema({
     required: true,
     default: 0
   },
+  shipping: {
+    type: Number,
+    required: true,
+    default: 0
+  },
   countInStock: {
     type: Number,
     required: true,
     default: 0
+  },
+  option1: {
+    type: String,
+    required: false
+  },
+  option2: {
+    type: String,
+    required: false
+  },
+  option3: {
+    type: String,
+    required: false
+  },
+  option4: {
+    type: String,
+    required: false
   }
 }, { timestamps: true });
 

@@ -39,12 +39,12 @@ const OrderListScreen = ({ history }) => {
               <th>DATE</th>
               <th>TOTAL</th>
               <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>SHIPPED</th>
               <th>ID</th>
             </tr>
           </thead>
           <tbody>
-            {orders.map((order)=> (
+            {orders.reverse().map((order)=> (
               <tr key={order._id}>
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>

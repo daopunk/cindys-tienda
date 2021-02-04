@@ -1,6 +1,7 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Button, Table, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Button, Table, Row, Col, Nav, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts, createProduct, deleteProduct } from '../actions/productActions';
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
@@ -46,6 +47,24 @@ const ProductListScreen = ({ history, match }) => {
     dispatch(createProduct());
   }
 
+  const [keyword, setKeyword] = useState('');
+
+  useEffect(() => {
+    dispatch(listProducts(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
+
+  const searchHeader = (
+    <Nav>
+    <Link to='/admin/productlist'><Button className='btn btn-light my-1 mx-1' onClick={()=>setKeyword('')}>All</Button></Link>
+    <Link to={`/admin/category?Collages`} ><Button className='btn btn-light my-1 mx-1'>Collages</Button></Link>
+    <Link to={`/admin/category?Earrings`} ><Button className='btn btn-light my-1 mx-1'>Earrings</Button></Link>
+    <Link to={`/admin/category?Paintings`} ><Button className='btn btn-light my-1 mx-1'>Paintings</Button></Link>
+    <div inline className='my-1'>
+        <Form.Control inline type='text' name='q' onChange={(e)=>setKeyword(e.target.value)} 
+          placeholder='Search Products...' className='mr-sm-2 ml-sm-5' style={{border:'1px solid #333'}}></Form.Control>
+    </div>
+    </Nav>);
+
   return (
     <Fragment>
       <Row className='align-items-center'>
@@ -56,6 +75,7 @@ const ProductListScreen = ({ history, match }) => {
           <Button className='my-3' onClick={createProductHandler}><i className='fas fa-plus'></i>Create Product</Button>
         </Col>
       </Row>
+      {searchHeader}
       {loadingDelete && <Loader />}
       {loadingCreate && <Loader />}
       {errorDelete && <Message variant='danger'>{errorDelete}</Message>}

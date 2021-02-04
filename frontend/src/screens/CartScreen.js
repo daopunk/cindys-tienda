@@ -10,7 +10,8 @@ import { ORDER_LIST_RESET } from '../constants/orderConstants';
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
 
-  const qty = location.search ? Number(location.search.split('=')[1]) : 1;
+  const qty = location.search ? Number(location.search.split('=')[1][0]) : 1;
+  const selectedOption = location.search.split('=')[2] ? location.search.split('=')[2] : '';
 
   const dispatch = useDispatch();
 
@@ -19,9 +20,9 @@ const CartScreen = ({ match, location, history }) => {
 
   useEffect(()=>{
     if(productId) {
-      dispatch(addToCart(productId, qty))
+      dispatch(addToCart(productId, qty, selectedOption))
     }
-  }, [dispatch, productId, qty]);
+  }, [dispatch, productId, qty, selectedOption]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
@@ -32,7 +33,6 @@ const CartScreen = ({ match, location, history }) => {
     dispatch({ type: ORDER_LIST_RESET });
     window.location.reload(true);
   }
-
   
   return (
     <Row>
@@ -45,11 +45,12 @@ const CartScreen = ({ match, location, history }) => {
             <ListGroup.Item key={item.product}>
               <Row>
                 <Col md={2}>
-                  <Image src={item.image} alt={item.name} fluid rounded />
+                  <Image src={item.image1} alt={item.name} fluid rounded />
                 </Col>
-                <Col md={3}>
+                <Col md={2}>
                   <Link to={`/product/${item.product}`}>{item.name}</Link>
                 </Col>
+                <Col md={1}>{item.selectedOption}</Col>
                 <Col md={2}>${item.price}</Col>
                 <Col md={2}>
                   <Form.Control as='select' value={item.qty} onChange={(e)=>dispatch(addToCart(item.product, Number(e.target.value)))}>

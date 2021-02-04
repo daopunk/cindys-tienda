@@ -17,10 +17,19 @@ const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state)=> state.cart);
   const cs = cart.shippingAddress;
 
+  // shipping cost
+  const calcShipping = (arr) => {
+    let num = 0;
+    arr.map((item) => {
+      return (item.shipping > num) ? (num = item.shipping) : (num);
+    })
+    return num;
+  }
+
   // calculate prices
   const addDecimals = (num) => (Math.round(num * 100) /100).toFixed(2);
   cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
-  cart.shippingPrice = 0//(cart.itemsPrice < 50) ? 5 : 0;
+  cart.shippingPrice = calcShipping(cart.cartItems);
   cart.taxPrice = addDecimals(Number(cart.itemsPrice * .0725));
   cart.totalPrice =  (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2);
 
@@ -101,12 +110,13 @@ const PlaceOrderScreen = ({ history }) => {
                 <ListGroup.Item key={i}>
                   <Row>
                     <Col md={1}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
+                      <Image src={item.image1} alt={item.name} fluid rounded />
                     </Col>
                     <Col>
                       <Link to={`/product/${item.product}`}>{item.name}</Link>
                     </Col>
-                    <Col md={4}>
+                    <Col md={1}>{item.selectedOption}</Col>
+                    <Col md={3}>
                       {item.qty} x ${item.price} = ${item.qty * item.price}
                     </Col>
                   </Row>

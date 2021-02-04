@@ -1,10 +1,20 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Image } from 'react-bootstrap';
 
 const AboutScreen = () => {
   return (
     <Fragment>
+      <div className="main-storebanner">
+        <div className='main-title-container'>
+          <h1 className='main-title'>[ Cin </h1>
+          <i className='fas fa-circle'/>
+          <h1 className='main-title'>di</h1>
+          <i className='fas fa-circle'/>
+          <h1 className='main-title'>ta ]</h1>
+          <h2 className='main-sub-title'><i>noun</i></h2>
+        </div>
+        <hr/>
+      </div>
       <div className="about-sections">
         <div className="about-texts">
           <div className="row about-section">
@@ -35,7 +45,7 @@ const AboutScreen = () => {
           </div>
         </div>
         <hr/>
-        <h4 style={{textAlign:'center'}}>Browse Galleries</h4>
+        <h4 style={{textAlign:'center'}}>Cindita's Offerings</h4>
         <div className="row about-icons">
           <div className="col">
             <Link to={`/category?Collages`} >

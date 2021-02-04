@@ -6,9 +6,9 @@ const Footer = () => {
     <footer>
       <Container>
         <Row>
-          <Col className='text-center py-3'>
-            Cindita's Tiendita &copy; 2021  |
-            <a href='https://hunterking.info/' target='_blank' >  Designed by Hunter King</a>
+          <Col className='text-center'>
+            Cindita's Tiendita &copy; 2021<br/>
+            <a href='https://hunterking.info/' target='_blank' rel='noreferrer' ><i>developer</i> Hunter King</a>
           </Col>
 
         </Row>

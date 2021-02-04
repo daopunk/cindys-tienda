@@ -86,8 +86,8 @@ const OrderScreen = ({ match, history }) => {
                   {order.shippingAddress.postalCode},{' '}
                   {order.shippingAddress.country}
                 </p>
-                {order.isDelivered ? <Message variant='success'>Delivered on {order.deliveredAt}</Message> :
-                <Message variant='danger'>Your order has not been delivered</Message>}
+                {order.isDelivered ? <Message variant='success'>Shipped on {order.deliveredAt}</Message> :
+                <Message variant='danger'>Your order has not been shipped</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
                 <h2>Payment Method</h2>
@@ -105,12 +105,13 @@ const OrderScreen = ({ match, history }) => {
                   <ListGroup.Item key={i}>
                     <Row>
                       <Col md={1}>
-                        <Image src={item.image} alt={item.name} fluid rounded />
+                        <Image src={item.image1} alt={item.name} fluid rounded />
                       </Col>
                       <Col>
                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </Col>
-                      <Col md={4}>
+                      <Col md={1}>{item.selectedOption}</Col>
+                      <Col md={3}>
                         {item.qty} x ${item.price} = ${item.qty * item.price}
                       </Col>
                     </Row>
@@ -158,7 +159,7 @@ const OrderScreen = ({ match, history }) => {
                 {loadingDeliver && <Loader />}
                 {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
                   <ListGroup.Item>
-                    <Button type='button' className='btn btn-block' onClick={deliverHandler}>Mark As Delivered</Button>
+                    <Button type='button' className='btn btn-block' onClick={deliverHandler}>Mark As Shipped</Button>
                   </ListGroup.Item>
                 )}
               </ListGroup>

@@ -17,7 +17,7 @@ const Header = () => {
   }
 
   const logoStyle = {
-    height: "3rem"
+    height: "2.3rem"
   }
 
   return (
@@ -33,8 +33,11 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto text-right'>
-            <LinkContainer to='/about'>
-                <Nav.Link><i className='fas fa-store'/> About</Nav.Link>
+              <LinkContainer to='/'>
+                <Nav.Link><i className='fas fa-store'/> Tienda</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to='/about'>
+                <Nav.Link><i className='fas fa-hand-holding-heart'/> About</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/cart'>
                 <Nav.Link><i className='fas fa-shopping-cart'/> Cart</Nav.Link>

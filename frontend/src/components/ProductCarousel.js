@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Carousel, Image, Row, Col } from 'react-bootstrap';
+import { Carousel, Image } from 'react-bootstrap';
 import Loader from './Loader';
 import Message from './Message';
 import { listTopProducts } from '../actions/productActions';
@@ -29,7 +29,7 @@ const ProductCarousel = () => {
         </div>
         </Link>
         <Link to={`/product/${product._id}`}>
-          <Image className='ad-carousel-img' src={product.image} alt={product.name} />
+          <Image className='ad-carousel-img' src={product.image1} alt={product.name} />
         </Link>
       </Carousel.Item>)
     )}

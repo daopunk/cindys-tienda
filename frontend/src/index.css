@@ -11,7 +11,7 @@ h1 {
 }
 
 .main-storebanner {
-  margin: 1rem;
+  margin: 0;
 }
 
 .main-title-container {
@@ -24,9 +24,9 @@ h1 {
   display: inline-block;
   text-align: center;
   font-weight: 500;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   color: #333;
-  padding: 0 .25rem 0 1.5rem;
+  padding: 0 .25rem 0 1.25rem;
   transform: scaleY(1.2);
 }
 
@@ -34,18 +34,18 @@ h1 {
   display: inline-block;
   text-align: center;
   font-weight: 500;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #333;
   transform: scaleY(1.1);
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 
 .fa-circle {
   display: inline-block;
   text-align: center;
   position: absolute;
-  top: 2.4rem;
-  font-size: 1rem;
+  top: 2rem;
+  font-size: .75rem;
 }
 
 .shop {
@@ -71,7 +71,7 @@ h3 {
 
 /* carousel */
 .ad-container {
-  width: 50rem;
+  width: 98%;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 1.5rem;
@@ -82,7 +82,6 @@ h3 {
 .carousel-item-prev,
 .carousel-item.active {
   display: flex;
-  /* background-color: #fff; */
   background-image: url('./images/140921.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -126,6 +125,8 @@ h3 {
 
 .ad-p {
   transform: scaleY(1.2);
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .ad-h2 {
@@ -141,12 +142,6 @@ h3 {
   color: #333;
 }
 
-@media (max-width: 900px) {
-  .carousel-caption h2 {
-    font-size: 2.5vw;
-  }
-}
-
 /* about section */
 .about-sections {
   width: 80%;
@@ -155,8 +150,8 @@ h3 {
 }
 
 .about-texts {
-  font-size: 1.2rem;
-  line-height: 1.9rem;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
 }
 
 .about-icons {
@@ -226,9 +221,210 @@ h3 {
 }
 
 .row {
-  padding: 3rem 0 3rem 0;
+  padding: .5rem 0 .5rem 0;
 }
 
-.col {
-  padding: 0 2rem 0 2rem;
+@media only screen and (max-width: 991px) {
+  .about-sections {
+    width: 100%;
+  }
+
+  .ad-carousel-img {
+    height: 15rem;
+    margin-top: .75rem;
+    margin-bottom: 2rem;
+    margin-right: 10rem;
+  }
+  
+  .ad-carousel-desc-container {
+    padding-right: 1.5rem;
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 2rem;
+    margin-left: 6rem;
+  }
+
+  .ad-h1 {
+    padding-top: 1.75rem;
+    padding-bottom: .5rem;
+  }
+
+  .ad-p {
+    font-size: 1rem;
+  }
+  
+  .ad-h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .main-title-container {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  .about-texts {
+    font-size: .95rem;
+    line-height: 1.3rem;
+  }
+
+  .about-pic-sec-1 {
+    margin: 0 1rem 0 1rem;
+  }
+  
+  .about-pic-sec-2 {
+    margin: 0 1rem 0 1rem;
+  }
+  
+  .about-pic-sec-3 {
+    margin: 0 1rem 0 1rem;
+  }
+
+  .about-icon-1 {
+    height: 6rem;
+    width: 6rem;
+  }
+  
+  .about-icon-2 {
+    height: 6rem;
+    width: 6rem;
+  }
+  
+  .about-icon-3 {
+    height: 6rem;
+    width: 6rem;
+  }
+
+  .ad-carousel-img {
+    height: 12rem;
+    margin-top: .75rem;
+    margin-right: 12rem;
+  }
+  
+  .ad-carousel-desc-container {
+    padding-right: 1.5rem;
+    width: 12rem;
+    height: 12rem;
+    margin-bottom: 2.5rem;
+    margin-left: 4rem;
+  }
+
+  .ad-h1 {
+    font-size: 1.3rem;
+  }
+
+  .ad-p {
+    font-size: .95rem;
+  }
+  
+  .ad-h2 {
+    font-size: .95rem;
+  }
+}
+
+@media only screen and (max-width: 539px) {
+  .main-title-container {
+    margin: 1rem 0 1rem 0;
+  }
+
+  .about-texts {
+    font-size: .8rem;
+    line-height: 1rem;
+  }
+
+  .about-pic-sec-1 {
+    margin: 0 0 0 .5rem;
+  }
+  
+  .about-pic-sec-2 {
+    margin: 0 .5rem 0 0;
+  }
+  
+  .about-pic-sec-3 {
+    margin: 0 0 0 .5rem;
+  }
+  
+  .about-icons {
+    margin: 1rem 0 1rem 1rem;
+  }
+
+  .about-icon-1 {
+    height: 4.15rem;
+    width: 4.15rem;
+  }
+  
+  .about-icon-2 {
+    height: 4.15rem;
+    width: 4.15rem;
+  }
+  
+  .about-icon-3 {
+    height: 4.15rem;
+    width: 4.15rem;
+  }
+
+  .ad-carousel-img {
+    height: 10rem;
+    margin-top: .75rem;
+    margin-right: 14rem;
+  }
+  
+  .ad-carousel-desc-container {
+    padding-right: 1.5rem;
+    width: 12rem;
+    height: 12rem;
+    margin-bottom: 0rem;
+    margin-left: 2rem;
+  }
+
+  .ad-h1 {
+    font-size: 1.1rem;
+  }
+
+  .ad-p {
+    font-size: .85rem;
+  }
+  
+  .ad-h2 {
+    font-size: .85rem;
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .ad-container {
+    display: none;
+  }
+
+  .about-texts {
+    font-size: .75rem;
+    line-height: .9rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .main-title {
+    font-weight: 400;
+    font-size: 3rem;
+    padding: 0 .15rem 0 1rem;
+  }
+  
+  .main-sub-title {
+    font-weight: 400;
+    font-size: 2rem;
+    margin-left: 1rem;
+  }
+  
+  .fa-circle {
+    font-size: .65rem;
+  }
+
+  .about-icons {
+    margin: 1rem 0 1rem 0;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .about-sections {
+    width: 60%;
+  }
 }

@@ -1,26 +1,35 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Image, ListGroup, Card, Button, Form, Carousel } from 'react-bootstrap';
+import { Row, Col, Image, ListGroup, Card, Button, Form, Carousel, Dropdown, DropdownButton } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Meta from '../components/Meta';
 import { listProductDetails } from '../actions/productActions';
 
 const ProductScreen = ({ match, history }) => {
-  const [qty, setQty] = useState(1);
-
   const dispatch = useDispatch();
+  const productId = match.params.id;
+
+  const [qty, setQty] = useState(1);
+  const [selectedOption, setSelectedOption] = useState('');
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
   useEffect(() => {
-    dispatch(listProductDetails(match.params.id));
-  }, [dispatch, match]);
+    dispatch(listProductDetails(productId));
+  }, [dispatch, productId]);
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`);
+    history.push(
+      (selectedOption) ?
+      `/cart/${productId}?qty=${qty}&option=${selectedOption}` :
+      `/cart/${productId}?qty=${qty}`);
+  }
+
+  const handleSelect=(e)=>{
+    setSelectedOption(e);
   }
 
   return (
@@ -32,11 +41,24 @@ const ProductScreen = ({ match, history }) => {
           <Col md={6}>
           <Carousel pause='hover' className='bg-light'>
             <Carousel.Item key={product._id}>
-              <Image className="details-carousel-img" src={product.image} alt={product.name} fluid />
+              <Image className="details-carousel-img" src={product.image1} alt={product.name} fluid />
             </Carousel.Item>
+            {product.image2 &&
             <Carousel.Item key={product._id}>
-                <Image className="details-carousel-img" src={product.featureImage} alt={product.name} fluid />
-            </Carousel.Item>
+                <Image className="details-carousel-img" src={product.image2} alt={product.name} fluid />
+            </Carousel.Item>}
+            {product.image3 &&
+            <Carousel.Item key={product._id}>
+                <Image className="details-carousel-img" src={product.image3} alt={product.name} fluid />
+            </Carousel.Item>}
+            {product.image4 &&
+            <Carousel.Item key={product._id}>
+                <Image className="details-carousel-img" src={product.image4} alt={product.name} fluid />
+            </Carousel.Item>}
+            {product.image5 &&
+            <Carousel.Item key={product._id}>
+                <Image className="details-carousel-img" src={product.image5} alt={product.name} fluid />
+            </Carousel.Item>}
           </Carousel>
           </Col>
           <Col md={3}>
@@ -54,6 +76,19 @@ const ProductScreen = ({ match, history }) => {
                 <strong>Description: </strong><br/>{product.description}
               </ListGroup.Item>)}
             </ListGroup>
+            {product.option1 && (
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                  <strong>Option: </strong>{selectedOption}
+                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleSelect(e)}>
+                    <Dropdown.Item eventKey={product.option1}>{product.option1}</Dropdown.Item>
+                    <Dropdown.Item eventKey={product.option2}>{product.option2}</Dropdown.Item>
+                    {product.option3 && <Dropdown.Item eventKey={product.option3}>{product.option3}</Dropdown.Item>}
+                    {product.option4 && <Dropdown.Item eventKey={product.option4}>{product.option4}</Dropdown.Item>}
+                  </DropdownButton>
+                </ListGroup.Item>
+              </ListGroup>
+            )}
           </Col>
           <Col md={3}>
             <Card>
@@ -85,7 +120,8 @@ const ProductScreen = ({ match, history }) => {
                   </ListGroup.Item>
                 )}
                 <ListGroup.Item>
-                  <Button onClick={addToCartHandler} className='btn-block' type='button' disabled={product.countInStock === 0} >Add To Cart</Button>
+                  <Button onClick={addToCartHandler} className='btn-block' type='button' 
+                  disabled={product.countInStock === 0 || (product.option1 && !selectedOption)} >Add To Cart</Button>
                 </ListGroup.Item>
               </ListGroup>
             </Card>
