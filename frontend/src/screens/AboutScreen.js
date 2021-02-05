@@ -45,7 +45,7 @@ const AboutScreen = () => {
           </div>
         </div>
         <hr/>
-        <h4 style={{textAlign:'center'}}>Cindita's Offerings</h4>
+        <h4 style={{textAlign:'center'}}>My Offerings</h4>
         <div className="row about-icons">
           <div className="col">
             <Link to={`/category?Collages`} >

@@ -9,7 +9,7 @@ import Paginate from '../components/Paginate';
 import Meta from '../components/Meta';
 import ProductCarousel from '../components/ProductCarousel';
 import { listProducts } from '../actions/productActions';
-import hand_heart from '../images/hand_heart.png';
+import heart_in_hand from '../images/heart_in_hand.png';
 
 const HomeStoreScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const HomeStoreScreen = ({ match }) => {
           <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''} />
         </Fragment>)}
         <div style={{textAlign:"center"}}>
-          <Image style={{ width:"10rem"}} src={hand_heart} alt="hand and heart" />
+          <Image style={{ width:"10rem"}} src={heart_in_hand} alt="hand and heart" />
         </div>
         <div style={{margin:"1.5rem 0 1.5rem 0"}} >
           <h4 style={{margin:"0 0 1rem .5rem"}}>all merchandise is hand-crafted by cindy macias</h4>
