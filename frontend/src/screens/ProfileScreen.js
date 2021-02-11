@@ -98,7 +98,7 @@ const ProfileScreen = ({ location, history }) => {
             <th>ID</th>
           </tr>
           <tbody>
-            {orders.map((order)=>(
+            {orders.reverse().map((order)=>(
               <tr key={order._id}>
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
