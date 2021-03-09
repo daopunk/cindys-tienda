@@ -104,13 +104,14 @@ const OrderScreen = ({ match, history }) => {
                 (<ListGroup variant='flush'>{ order.orderItems.map((item, i)=> (
                   <ListGroup.Item key={i}>
                     <Row>
-                      <Col md={1}>
+                      <Col md={2}>
                         <Image src={item.image1} alt={item.name} fluid rounded />
                       </Col>
-                      <Col>
+                      <Col md={5}>
                         <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </Col>
                       <Col md={1}>{item.selectedOption}</Col>
+                      <Col md={1}>{item.selectedFrame}</Col>
                       <Col md={3}>
                         {item.qty} x ${item.price} = ${item.qty * item.price}
                       </Col>

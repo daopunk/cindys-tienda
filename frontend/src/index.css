@@ -144,7 +144,7 @@ h3 {
 
 /* about section */
 .about-sections {
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -411,11 +411,5 @@ h3 {
 
   .about-icons {
     margin: 1rem 0 1rem 0;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .about-sections {
-    width: 60%;
   }
 }

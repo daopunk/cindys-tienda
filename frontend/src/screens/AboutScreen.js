@@ -6,10 +6,6 @@ import cindyBby from '../images/cindyBby.png';
 
 const AboutScreen = () => {
 
-  const logoStyle = {
-    height: '4rem'
-  }
-
   const mobileStyle1 = {
     height: '15rem',
     margin: 'auto',
@@ -24,12 +20,6 @@ const AboutScreen = () => {
 
   return (
     <Fragment>
-      <div>
-        <h1 style={{textAlign:'center',margin:'1.5rem',fontSize:'2.5rem'}}>
-        <Image src={fireMoon} style={logoStyle} alt='Fire Moon' />
-        welcome to cindita's tienda</h1>
-        <hr/>
-      </div>
       <div className="about-sections">
         <div className="about-texts">
           <div className="main-storebanner">
@@ -88,3 +78,14 @@ const AboutScreen = () => {
 }
 
 export default AboutScreen
+
+{/* 
+const logoStyle = {height: '4rem'}
+  
+<div>
+<h1 style={{textAlign:'center',margin:'1.5rem',fontSize:'2.5rem'}}>
+<Image src={fireMoon} style={logoStyle} alt='Fire Moon' />
+welcome to cindita's tienda</h1>
+<hr/>
+</div> 
+*/}

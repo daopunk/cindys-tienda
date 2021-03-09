@@ -13,6 +13,7 @@ const ProductScreen = ({ match, history }) => {
 
   const [qty, setQty] = useState(1);
   const [selectedOption, setSelectedOption] = useState('');
+  const [selectedFrame, setSelectedFrame] = useState('');
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -21,15 +22,21 @@ const ProductScreen = ({ match, history }) => {
     dispatch(listProductDetails(productId));
   }, [dispatch, productId]);
 
+  const url = (!selectedOption && !selectedFrame) ? `/cart/${productId}?qty=${qty}` :
+  (selectedOption && !selectedFrame) ? `/cart/${productId}?qty=${qty}&option=${selectedOption}` :
+  (!selectedOption && selectedFrame) ? `/cart/${productId}?qty=${qty}&frame=${selectedFrame}` :
+  `/cart/${productId}?qty=${qty}&option=${selectedOption}&frame=${selectedFrame}`;
+
   const addToCartHandler = () => {
-    history.push(
-      (selectedOption) ?
-      `/cart/${productId}?qty=${qty}&option=${selectedOption}` :
-      `/cart/${productId}?qty=${qty}`);
+    history.push(url)
   }
 
-  const handleSelect=(e)=>{
+  const handleOptionSelect=(e)=>{
     setSelectedOption(e);
+  }
+
+  const handleFrameSelect=(e)=>{
+    setSelectedFrame(e);
   }
 
   return (
@@ -80,11 +87,24 @@ const ProductScreen = ({ match, history }) => {
               <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <strong>Option: </strong>{selectedOption}
-                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleSelect(e)}>
+                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleOptionSelect(e)}>
                     <Dropdown.Item eventKey={product.option1}>{product.option1}</Dropdown.Item>
                     <Dropdown.Item eventKey={product.option2}>{product.option2}</Dropdown.Item>
                     {product.option3 && <Dropdown.Item eventKey={product.option3}>{product.option3}</Dropdown.Item>}
                     {product.option4 && <Dropdown.Item eventKey={product.option4}>{product.option4}</Dropdown.Item>}
+                  </DropdownButton>
+                </ListGroup.Item>
+              </ListGroup>
+            )}
+            {product.frame1 && (
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                  <strong>Frame: </strong>{selectedFrame}
+                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleFrameSelect(e)}>
+                    <Dropdown.Item eventKey={product.frame1}>{product.frame1}</Dropdown.Item>
+                    <Dropdown.Item eventKey={product.frame2}>{product.frame2}</Dropdown.Item>
+                    {product.frame3 && <Dropdown.Item eventKey={product.frame3}>{product.frame3}</Dropdown.Item>}
+                    {product.frame4 && <Dropdown.Item eventKey={product.frame4}>{product.frame4}</Dropdown.Item>}
                   </DropdownButton>
                 </ListGroup.Item>
               </ListGroup>
@@ -121,7 +141,7 @@ const ProductScreen = ({ match, history }) => {
                 )}
                 <ListGroup.Item>
                   <Button onClick={addToCartHandler} className='btn-block' type='button' 
-                  disabled={product.countInStock === 0 || (product.option1 && !selectedOption)} >Add To Cart</Button>
+                  disabled={product.countInStock === 0 || (product.option1 && !selectedOption) || (product.frame1 && !selectedFrame)} >Add To Cart</Button>
                 </ListGroup.Item>
               </ListGroup>
             </Card>

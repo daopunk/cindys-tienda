@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails, updateProduct } from '../actions/productActions';
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
@@ -30,6 +30,9 @@ const ProductEditScreen = ({ match, history }) => {
   const [option2, setOption2] = useState('');
   const [option3, setOption3] = useState('');
   const [option4, setOption4] = useState('');
+  const [frame1, setFrame1] = useState('');
+  const [frame2, setFrame2] = useState('');
+  const [frame3, setFrame3] = useState('');
   const [uploading, setUploading] = useState(false);
 
   const productDetails = useSelector((state)=> state.productDetails);
@@ -61,6 +64,9 @@ const ProductEditScreen = ({ match, history }) => {
         setOption2(product.option2);
         setOption3(product.option3);
         setOption4(product.option4);
+        setFrame1(product.frame1);
+        setFrame2(product.frame2);
+        setFrame3(product.frame3);
       }
     }
   }, [dispatch, productId, product, history, successUpdate]);
@@ -73,7 +79,7 @@ const ProductEditScreen = ({ match, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(updateProduct({ _id: productId, name, description, price, shipping, rating, image1, image2, image3, image4, image5, category, countInStock, option1, option2, option3, option4  }));
+    dispatch(updateProduct({ _id: productId, name, description, price, shipping, rating, image1, image2, image3, image4, image5, category, countInStock, option1, option2, option3, option4, frame1, frame2, frame3  }));
     dispatch(listProductDetails(productId));
     refreshPage();
   }
@@ -174,111 +180,129 @@ const ProductEditScreen = ({ match, history }) => {
         {loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) :
           (<Fragment>
             <Form onSubmit={submitHandler}>
-              <Form.Group controlId='name'>
-                <Form.Label>Name</Form.Label>
-                <Form.Control type='name' placeholder='name' value={name} onChange={(e)=>setName(e.target.value)}></Form.Control>
+              <Form.Group as={Row} controlId='name'>
+                <Form.Label column sm='3'>NAME</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='name' placeholder='name' value={name} onChange={(e)=>setName(e.target.value)}></Form.Control>
+                </Col>
               </Form.Group>
-              <Form.Group controlId='price'>
-                <Form.Label>Price</Form.Label>
-                <Form.Control type='number' placeholder='price' value={price} onChange={(e)=>setPrice(e.target.value)}></Form.Control>
+              <Form.Group as={Row} controlId='price'>
+                <Form.Label column sm='3'>PRICE</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='number' placeholder='price' value={price} onChange={(e)=>setPrice(e.target.value)}></Form.Control>
+                </Col>
               </Form.Group>
-              <Form.Group controlId='shipping'>
-                <Form.Label>Shipping Charge</Form.Label>
-                <Form.Control type='number' placeholder='shipping' value={shipping} onChange={(e)=>setShipping(e.target.value)}></Form.Control>
+              <Form.Group as={Row} controlId='shipping'>
+                <Form.Label column sm='3'>SHIPPING</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='number' placeholder='shipping' value={shipping} onChange={(e)=>setShipping(e.target.value)}></Form.Control>
+                </Col>
               </Form.Group>
-              <Form.Group controlId='image1'>
-                <Form.Label>Image 1</Form.Label>
-                <Form.Control type='text' placeholder='image1 url' value={image1} onChange={(e)=>setImage1(e.target.value)}></Form.Control>
+              <Form.Group as={Row} controlId='countInStock'>
+                <Form.Label column sm='3'>STOCK</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='number' placeholder='countInStock' value={countInStock} onChange={(e)=>setCountInStock(e.target.value)}></Form.Control>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} controlId='rating'>
+                <Form.Label column sm='3'>RATING</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='number' placeholder='rating' value={rating} onChange={(e)=>setRating(e.target.value)}></Form.Control>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} controlId='category'>
+                <Form.Label column sm='3'>CATEGORY</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='category' value={category} onChange={(e)=>setCategory(e.target.value)}></Form.Control>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} controlId='description'>
+                <Form.Label column sm='3'>DESC</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='description' value={description} onChange={(e)=>setDescription(e.target.value)}></Form.Control>
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row} controlId='image1'>
+                <Form.Label column sm='3'>IMAGE-1</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='image1 url' value={image1} onChange={(e)=>setImage1(e.target.value)}></Form.Control>
+                </Col>
                 <Form.File id='image1-file' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
                 {uploading && <Loader />}
               </Form.Group>
-              <Form.Group controlId='category'>
-                <Form.Label>Category</Form.Label>
-                <Form.Control type='text' placeholder='category' value={category} onChange={(e)=>setCategory(e.target.value)}></Form.Control>
+              <p>OPTIONS:</p>
+              <Form.Group as={Row} controlId='options'>
+                <Form.Label column sm='3'>O1</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='option1' value={option1} onChange={(e)=>setOption1(e.target.value)}></Form.Control>
+                </Col>
+                <Form.Label column sm='3'>O2</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='option2' value={option2} onChange={(e)=>setOption2(e.target.value)}></Form.Control>
+                </Col>
+                <Form.Label column sm='3'>O3</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='option3' value={option3} onChange={(e)=>setOption3(e.target.value)}></Form.Control>
+                </Col>
+                <Form.Label column sm='3'>O4</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='option4' value={option4} onChange={(e)=>setOption4(e.target.value)}></Form.Control>
+                </Col>
               </Form.Group>
-              <Form.Group controlId='countInStock'>
-                <Form.Label>Count in Stock</Form.Label>
-                <Form.Control type='number' placeholder='countInStock' value={countInStock} onChange={(e)=>setCountInStock(e.target.value)}></Form.Control>
+              <p>FRAMES:</p>
+              <Form.Group as={Row} controlId='frames'>
+                <Form.Label column sm='3'>F1</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='frame1' value={frame1} onChange={(e)=>setFrame1(e.target.value)}></Form.Control>
+                </Col>
+                <Form.Label column sm='3'>F2</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='frame2' value={frame2} onChange={(e)=>setFrame2(e.target.value)}></Form.Control>
+                </Col>
+                <Form.Label column sm='3'>F3</Form.Label>
+                <Col sm='9'>
+                  <Form.Control type='text' placeholder='frame3' value={frame3} onChange={(e)=>setFrame3(e.target.value)}></Form.Control>
+                </Col>
               </Form.Group>
-              <Form.Group controlId='description'>
-                <Form.Label>Description</Form.Label>
-                <Form.Control type='text' placeholder='description' value={description} onChange={(e)=>setDescription(e.target.value)}></Form.Control>
-              </Form.Group>
-              <Form.Group controlId='rating'>
-                <Form.Label>Rating</Form.Label>
-                <Form.Control type='number' placeholder='rating' value={rating} onChange={(e)=>setRating(e.target.value)}></Form.Control>
-              </Form.Group>
-              <Button type='submit' variant='primary'>Update</Button>
+              <Button type='submit' variant='primary'>Update Product</Button>
             </Form>
             <hr/>
-            <p>* Note:<br/>
-              To add options (e.g. red, blue, green), simply type in the option text box, up to four options. Then click the corresponding blue "Update" button.
-            </p>
-            <Form onSubmit={submitHandler}>
-              <Form.Group controlId='option1'>
-                <Form.Label>Option 1</Form.Label>
-                <Form.Control type='text' placeholder='option1' value={option1} onChange={(e)=>setOption1(e.target.value)}></Form.Control>
-              </Form.Group>
-              <Form.Group controlId='option2'>
-                <Form.Label>Option 2</Form.Label>
-                <Form.Control type='text' placeholder='option2' value={option2} onChange={(e)=>setOption2(e.target.value)}></Form.Control>
-              </Form.Group>
-              <Form.Group controlId='option3'>
-                <Form.Label>Option 3</Form.Label>
-                <Form.Control type='text' placeholder='option3' value={option3} onChange={(e)=>setOption3(e.target.value)}></Form.Control>
-              </Form.Group>
-              <Form.Group controlId='option4'>
-                <Form.Label>Option 4</Form.Label>
-                <Form.Control type='text' placeholder='option4' value={option4} onChange={(e)=>setOption4(e.target.value)}></Form.Control>
-              </Form.Group>
-              <Button type='submit' variant='primary'>Update</Button>
-            </Form>
-            <hr/>
-            <p>* Note:<br/>
-              To upload additional images, click "Browse" to choose an image, then click the corresponding blue "Update" button to complete upload. This must be done for each addtional image uploaded.
-            </p>
-            <h2 className='my-4'>Edit Image</h2>
+            <h2 className='my-4'>Edit Images 2 - 5</h2>
+            <p>* for each additional image, an update per image must be clicked</p>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId='image2'>
-                <Form.Label>Image 2</Form.Label>
                 <Form.Control type='text' placeholder='image2 url' value={image2} onChange={(e)=>setImage2(e.target.value)}></Form.Control>
                 <Form.File id='image2-file' label='Choose File' custom onChange={uploadFileHandlerTwo}></Form.File>
                 {uploading && <Loader />}
               </Form.Group>
-              <Button type='submit' variant='primary'>Update Image</Button>
+              <Button type='submit' variant='primary'>Update IMG-2</Button>
             </Form>
             <hr/>
-            <h2 className='my-4'>Edit Image 3</h2>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId='image3'>
-                <Form.Label>Image 3</Form.Label>
                 <Form.Control type='text' placeholder='image3 url' value={image3} onChange={(e)=>setImage3(e.target.value)}></Form.Control>
                 <Form.File id='image3-file' label='Choose File' custom onChange={uploadFileHandlerThree}></Form.File>
                 {uploading && <Loader />}
               </Form.Group>
-              <Button type='submit' variant='primary'>Update Image</Button>
+              <Button type='submit' variant='primary'>Update IMG-3</Button>
             </Form>
             <hr/>
-            <h2 className='my-4'>Edit Image 4</h2>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId='image4'>
-                <Form.Label>Image 4</Form.Label>
                 <Form.Control type='text' placeholder='image4 url' value={image4} onChange={(e)=>setImage4(e.target.value)}></Form.Control>
                 <Form.File id='image4-file' label='Choose File' custom onChange={uploadFileHandlerFour}></Form.File>
                 {uploading && <Loader />}
               </Form.Group>
-              <Button type='submit' variant='primary'>Update Image</Button>
+              <Button type='submit' variant='primary'>Update IMG-4</Button>
             </Form>
             <hr/>
-            <h2 className='my-4'>Edit Image 5</h2>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId='image5'>
-                <Form.Label>Image 5</Form.Label>
                 <Form.Control type='text' placeholder='image5 url' value={image5} onChange={(e)=>setImage5(e.target.value)}></Form.Control>
                 <Form.File id='image5-file' label='Choose File' custom onChange={uploadFileHandlerFive}></Form.File>
                 {uploading && <Loader />}
               </Form.Group>
-              <Button type='submit' variant='primary'>Update Image</Button>
+              <Button type='submit' variant='primary'>Update IMG-5</Button>
             </Form>
           </Fragment>)}
       </FormContainer>

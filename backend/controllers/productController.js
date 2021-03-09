@@ -51,7 +51,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @access: private/admin
 const createProduct = asyncHandler(async (req, res) => {
   const product = new CT_Product({
-    name: 'Sample name',
+    name: 'sample name',
     price: 0,
     shipping: 0,
     user: req.user._id,
@@ -60,15 +60,17 @@ const createProduct = asyncHandler(async (req, res) => {
     image3: '',
     image4: '',
     image5: '',
-    category: 'Sample category',
+    category: 'sample category',
     countInStock: 0,
-    description: 'Sample desc',
+    description: 'sample description',
     rating: 0,
     option1: '',
     option2: '',
     option3: '',
     option4: '',
-    selectedOption: ''
+    frame1: '',
+    frame2: '',
+    frame3: ''
   });
 
   const createdProduct = await product.save();
@@ -79,7 +81,7 @@ const createProduct = asyncHandler(async (req, res) => {
 // @route: PUT /api/products/:id
 // @access: private/admin
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, shipping, description, image1, image2, image3, image4, image5, category, countInStock, rating, option1, option2, option3, option4, selectedOption } = req.body;
+  const { name, price, shipping, description, image1, image2, image3, image4, image5, category, countInStock, rating, option1, option2, option3, option4, frame1, frame2, frame3, selectedOption, selectedFrame } = req.body;
 
   const product = await CT_Product.findById(req.params.id);
 
@@ -100,6 +102,9 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.option2 = option2;
     product.option3 = option3;
     product.option4 = option4;
+    product.frame1 = frame1;
+    product.frame2 = frame2;
+    product.frame3 = frame3;
 
     const updatedProduct = await product.save();
     res.json(updatedProduct);

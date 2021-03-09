@@ -11,7 +11,8 @@ const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id;
 
   const qty = location.search ? Number(location.search.split('=')[1][0]) : 1;
-  const selectedOption = location.search.split('=')[2] ? location.search.split('=')[2] : '';
+  const selectedOption = location.search.split('=')[2] ? location.search.split('=')[2].split('&')[0] : '';
+  const selectedFrame = location.search.split('=')[3] ? location.search.split('=')[3] : '';
 
   const dispatch = useDispatch();
 
@@ -20,9 +21,9 @@ const CartScreen = ({ match, location, history }) => {
 
   useEffect(()=>{
     if(productId) {
-      dispatch(addToCart(productId, qty, selectedOption))
+      dispatch(addToCart(productId, qty, selectedOption, selectedFrame))
     }
-  }, [dispatch, productId, qty, selectedOption]);
+  }, [dispatch, productId, qty, selectedOption, selectedFrame]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
@@ -51,7 +52,8 @@ const CartScreen = ({ match, location, history }) => {
                   <Link to={`/product/${item.product}`}>{item.name}</Link>
                 </Col>
                 <Col md={1}>{item.selectedOption}</Col>
-                <Col md={2}>${item.price}</Col>
+                <Col md={1}>{item.selectedFrame}</Col>
+                <Col md={1}>${item.price}</Col>
                 <Col md={2}>
                   <Form.Control as='select' value={item.qty} onChange={(e)=>dispatch(addToCart(item.product, Number(e.target.value)))}>
                     {[...Array(item.countInStock).keys()].map((x) => (

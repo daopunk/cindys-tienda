@@ -73,7 +73,19 @@ const productSchema = mongoose.Schema({
   option4: {
     type: String,
     required: false
-  }
+  },
+  frame1: {
+    type: String,
+    required: false
+  },
+  frame2: {
+    type: String,
+    required: false
+  },
+  frame3: {
+    type: String,
+    required: false
+  },
 }, { timestamps: true });
 
 const CT_Product = mongoose.model('CT_Product', productSchema);
