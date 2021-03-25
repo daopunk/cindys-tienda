@@ -78,14 +78,3 @@ const AboutScreen = () => {
 }
 
 export default AboutScreen
-
-{/* 
-const logoStyle = {height: '4rem'}
-  
-<div>
-<h1 style={{textAlign:'center',margin:'1.5rem',fontSize:'2.5rem'}}>
-<Image src={fireMoon} style={logoStyle} alt='Fire Moon' />
-welcome to cindita's tienda</h1>
-<hr/>
-</div> 
-*/}

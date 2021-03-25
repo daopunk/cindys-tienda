@@ -69,6 +69,12 @@ h3 {
   margin: 0.1rem;
 }
 
+/* product page */
+.product-carousel {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* insta icon */
 .insta_icon {
   width: 3rem;
@@ -108,7 +114,6 @@ h3 {
 .ad-carousel-img {
   display: inline-block;
   height: 17rem;
-  width: 17rem;
   margin-top: 1rem;
   margin-bottom: 2.5rem;
   margin-right: 8rem;
@@ -194,7 +199,7 @@ h3 {
   width: 8rem;
   border: 1px solid #777;
   border-radius: 50%;
-  background-image: url(./images/icon-collage.jpg);
+  background-image: url(./images/icon-collage-2.png);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center; 
@@ -205,7 +210,7 @@ h3 {
   width: 8rem;
   border: 1px solid #777;
   border-radius: 50%;
-  background-image: url(./images/icon-earring.JPG);
+  background-image: url(./images/icon-earring-2.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center; 
@@ -216,7 +221,7 @@ h3 {
   width: 8rem;
   border: 1px solid #777;
   border-radius: 50%;
-  background-image: url(./images/icon-painting.JPG);
+  background-image: url(./images/icon-painting-2.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center; 
@@ -233,7 +238,6 @@ h3 {
 
   .ad-carousel-img {
     height: 15rem;
-    width: 15rem;
     margin-top: .75rem;
     margin-bottom: 2rem;
     margin-right: 10rem;
@@ -296,7 +300,6 @@ h3 {
 
   .ad-carousel-img {
     height: 12rem;
-    width: 12rem;
     margin-top: .75rem;
     margin-right: 12rem;
   }
@@ -373,7 +376,6 @@ h3 {
 
   .ad-carousel-img {
     height: 10rem;
-    width: 10rem;
     margin-top: .75rem;
     margin-right: 14rem;
   }

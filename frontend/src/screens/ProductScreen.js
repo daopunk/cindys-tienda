@@ -43,9 +43,10 @@ const ProductScreen = ({ match, history }) => {
     <Fragment>
       <Link className='btn btn-light my-3' to='/'>Back</Link>
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+        <Fragment>
         <Row>
           <Meta title={product.name} />
-          <Col md={6}>
+          <Col xs={12} sm={8} md={8} lg={8} className='product-carousel' >
           <Carousel pause='hover' className='bg-light'>
             <Carousel.Item key={product._id}>
               <Image className="details-carousel-img" src={product.image1} alt={product.name} fluid />
@@ -68,49 +69,7 @@ const ProductScreen = ({ match, history }) => {
             </Carousel.Item>}
           </Carousel>
           </Col>
-          <Col md={3}>
-            <ListGroup variant='flush'>
-              <ListGroup.Item>
-                <h2>{product.name}</h2>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <strong>Category: </strong>{product.category}
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <strong>Price: </strong>${product.price}
-              </ListGroup.Item>
-              {product.description && (<ListGroup.Item>
-                <strong>Description: </strong><br/>{product.description}
-              </ListGroup.Item>)}
-            </ListGroup>
-            {product.option1 && (
-              <ListGroup variant='flush'>
-                <ListGroup.Item>
-                  <strong>Option: </strong>{selectedOption}
-                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleOptionSelect(e)}>
-                    <Dropdown.Item eventKey={product.option1}>{product.option1}</Dropdown.Item>
-                    <Dropdown.Item eventKey={product.option2}>{product.option2}</Dropdown.Item>
-                    {product.option3 && <Dropdown.Item eventKey={product.option3}>{product.option3}</Dropdown.Item>}
-                    {product.option4 && <Dropdown.Item eventKey={product.option4}>{product.option4}</Dropdown.Item>}
-                  </DropdownButton>
-                </ListGroup.Item>
-              </ListGroup>
-            )}
-            {product.frame1 && (
-              <ListGroup variant='flush'>
-                <ListGroup.Item>
-                  <strong>Frame: </strong>{selectedFrame}
-                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleFrameSelect(e)}>
-                    <Dropdown.Item eventKey={product.frame1}>{product.frame1}</Dropdown.Item>
-                    <Dropdown.Item eventKey={product.frame2}>{product.frame2}</Dropdown.Item>
-                    {product.frame3 && <Dropdown.Item eventKey={product.frame3}>{product.frame3}</Dropdown.Item>}
-                    {product.frame4 && <Dropdown.Item eventKey={product.frame4}>{product.frame4}</Dropdown.Item>}
-                  </DropdownButton>
-                </ListGroup.Item>
-              </ListGroup>
-            )}
-          </Col>
-          <Col md={3}>
+          <Col xs={12} sm={4} md={4} lg={4}>
             <Card>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
@@ -147,6 +106,53 @@ const ProductScreen = ({ match, history }) => {
             </Card>
           </Col>
         </Row>
+        <Row>
+          <Col xs={12} sm={8} md={8} lg={8}>
+            <ListGroup variant='flush'>
+              <ListGroup.Item>
+                <h2>{product.name}</h2>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <strong>Category: </strong>{product.category}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <strong>Price: </strong>${product.price}
+              </ListGroup.Item>
+              {product.description && (<ListGroup.Item>
+                <strong>Description: </strong><br/>{product.description}
+              </ListGroup.Item>)}
+            </ListGroup>
+          </Col>
+          <Col xs={12} sm={4} md={4} lg={4}>
+            {product.option1 && (
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleOptionSelect(e)}>
+                    <Dropdown.Item eventKey={product.option1}>{product.option1}</Dropdown.Item>
+                    <Dropdown.Item eventKey={product.option2}>{product.option2}</Dropdown.Item>
+                    {product.option3 && <Dropdown.Item eventKey={product.option3}>{product.option3}</Dropdown.Item>}
+                    {product.option4 && <Dropdown.Item eventKey={product.option4}>{product.option4}</Dropdown.Item>}
+                  </DropdownButton>
+                  Option: <strong>{selectedOption ? selectedOption : 'not selected'}</strong>
+                </ListGroup.Item>
+              </ListGroup>
+            )}
+            {product.frame1 && (
+              <ListGroup variant='flush'>
+                <ListGroup.Item>
+                  <DropdownButton alignRight title="Options" id="dropdown-menu-align-right" onSelect={(e) => handleFrameSelect(e)}>
+                    <Dropdown.Item eventKey={product.frame1}>{product.frame1}</Dropdown.Item>
+                    <Dropdown.Item eventKey={product.frame2}>{product.frame2}</Dropdown.Item>
+                    {product.frame3 && <Dropdown.Item eventKey={product.frame3}>{product.frame3}</Dropdown.Item>}
+                    {product.frame4 && <Dropdown.Item eventKey={product.frame4}>{product.frame4}</Dropdown.Item>}
+                  </DropdownButton>
+                  Frame: <strong>{selectedFrame ? selectedFrame : 'not selected'}</strong>
+                </ListGroup.Item>
+              </ListGroup>
+            )}
+          </Col>
+        </Row>
+        </Fragment>
       )}
     </Fragment>
   )
