@@ -69,6 +69,15 @@ h3 {
   margin: 0.1rem;
 }
 
+/* insta icon */
+.insta_icon {
+  width: 3rem;
+  height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
 /* carousel */
 .ad-container {
   width: 98%;
@@ -99,6 +108,7 @@ h3 {
 .ad-carousel-img {
   display: inline-block;
   height: 17rem;
+  width: 17rem;
   margin-top: 1rem;
   margin-bottom: 2.5rem;
   margin-right: 8rem;
@@ -223,6 +233,7 @@ h3 {
 
   .ad-carousel-img {
     height: 15rem;
+    width: 15rem;
     margin-top: .75rem;
     margin-bottom: 2rem;
     margin-right: 10rem;
@@ -285,6 +296,7 @@ h3 {
 
   .ad-carousel-img {
     height: 12rem;
+    width: 12rem;
     margin-top: .75rem;
     margin-right: 12rem;
   }
@@ -361,6 +373,7 @@ h3 {
 
   .ad-carousel-img {
     height: 10rem;
+    width: 10rem;
     margin-top: .75rem;
     margin-right: 14rem;
   }

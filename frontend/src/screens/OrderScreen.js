@@ -101,7 +101,7 @@ const OrderScreen = ({ match, history }) => {
               <ListGroup.Item>
                 <h2>Order Items</h2>
                 {order.orderItems.length === 0 ? (<Message>Your order is empty.</Message>) :
-                (<ListGroup variant='flush'>{ order.orderItems.map((item, i)=> (
+                (<ListGroup variant='flush'>{order.orderItems.map((item, i)=> (
                   <ListGroup.Item key={i}>
                     <Row>
                       <Col md={2}>
