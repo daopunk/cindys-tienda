@@ -47,7 +47,7 @@ const ProductScreen = ({ match, history }) => {
         <Row>
           <Meta title={product.name} />
           <Col xs={12} sm={8} md={8} lg={8} className='product-carousel' >
-          <Carousel pause='hover' className='bg-light'>
+          <Carousel pause='hover'>
             <Carousel.Item key={product._id}>
               <Image className="details-carousel-img" src={product.image1} alt={product.name} thumbnail />
             </Carousel.Item>

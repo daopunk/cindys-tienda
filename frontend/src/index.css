@@ -77,6 +77,8 @@ h3 {
 
 .details-carousel-img {
   width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* insta icon */
@@ -101,6 +103,9 @@ h3 {
 .carousel-item-prev,
 .carousel-item.active {
   display: flex;
+}
+
+.ad-item {
   background-image: url('./images/140921.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -339,6 +344,11 @@ h3 {
   .not-mobile-sec {
     display: none;
   }
+
+  .details-carousel-img {
+    width: 30rem;
+    height: 30rem;
+  }
 }
 
 @media only screen and (max-width: 539px) {
@@ -403,11 +413,28 @@ h3 {
   .ad-h2 {
     font-size: .85rem;
   }
+
+  .details-carousel-img {
+    width: 25rem;
+    height: 25rem;
+  }
 }
 
 @media only screen and (max-width: 460px) {
   .ad-container {
     display: none;
+  }
+
+  .details-carousel-img {
+    width: 22rem;
+    height: 22rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .details-carousel-img {
+    width: 20rem;
+    height: 20rem;
   }
 }
 
@@ -430,5 +457,10 @@ h3 {
 
   .about-icons {
     margin: 1rem 0 1rem 0;
+  }
+
+  .details-carousel-img {
+    width: 18rem;
+    height: 18rem;
   }
 }

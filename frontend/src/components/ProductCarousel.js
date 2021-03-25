@@ -18,15 +18,15 @@ const ProductCarousel = () => {
   }, [dispatch]);
 
   return loading ? (<Loader />) : error ? (<Message variant='danger'>{error}</Message>) :
-  (<Carousel pause='hover' className='bg-light' >
+  (<Carousel pause='hover' >
     {products.map((product)=> 
-      (<Carousel.Item key={product._id}>
+      (<Carousel.Item key={product._id} className='ad-item'>
         <Link to={`/product/${product._id}`}>
-        <div className='ad-carousel-desc-container'>
-          <h1 className='ad-h1'>{product.name}</h1>
-          <p className='ad-p'>{product.description}</p>
-          <h2 className='ad-h2'>${product.price}</h2>
-        </div>
+          <div className='ad-carousel-desc-container'>
+            <h1 className='ad-h1'>{product.name}</h1>
+            <p className='ad-p'>{product.description}</p>
+            <h2 className='ad-h2'>${product.price}</h2>
+          </div>
         </Link>
         <Link to={`/product/${product._id}`}>
           <Image className='ad-carousel-img' src={product.image1} alt={product.name} />
