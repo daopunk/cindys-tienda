@@ -69,10 +69,14 @@ h3 {
   margin: 0.1rem;
 }
 
-/* product page */
+/* product page carousel */
 .product-carousel {
   margin-left: auto;
   margin-right: auto;
+}
+
+.details-carousel-img {
+  width: 100%;
 }
 
 /* insta icon */

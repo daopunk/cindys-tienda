@@ -49,23 +49,23 @@ const ProductScreen = ({ match, history }) => {
           <Col xs={12} sm={8} md={8} lg={8} className='product-carousel' >
           <Carousel pause='hover' className='bg-light'>
             <Carousel.Item key={product._id}>
-              <Image className="details-carousel-img" src={product.image1} alt={product.name} fluid />
+              <Image className="details-carousel-img" src={product.image1} alt={product.name} thumbnail />
             </Carousel.Item>
             {product.image2 &&
             <Carousel.Item key={product._id}>
-                <Image className="details-carousel-img" src={product.image2} alt={product.name} fluid />
+                <Image className="details-carousel-img" src={product.image2} alt={product.name} thumbnail />
             </Carousel.Item>}
             {product.image3 &&
             <Carousel.Item key={product._id}>
-                <Image className="details-carousel-img" src={product.image3} alt={product.name} fluid />
+                <Image className="details-carousel-img" src={product.image3} alt={product.name} thumbnail />
             </Carousel.Item>}
             {product.image4 &&
             <Carousel.Item key={product._id}>
-                <Image className="details-carousel-img" src={product.image4} alt={product.name} fluid />
+                <Image className="details-carousel-img" src={product.image4} alt={product.name} thumbnail />
             </Carousel.Item>}
             {product.image5 &&
             <Carousel.Item key={product._id}>
-                <Image className="details-carousel-img" src={product.image5} alt={product.name} fluid />
+                <Image className="details-carousel-img" src={product.image5} alt={product.name} thumbnail />
             </Carousel.Item>}
           </Carousel>
           </Col>
