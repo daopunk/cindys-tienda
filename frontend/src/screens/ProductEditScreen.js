@@ -269,6 +269,7 @@ const ProductEditScreen = ({ match, history }) => {
             <hr/>
             <h2 className='my-4'>Edit Images 2 - 5</h2>
             <p>* for each additional image, an update per image must be clicked</p>
+            <p>* to delete an image, delete the text and click update with an empty input</p>
             <Form onSubmit={submitHandler}>
               <Form.Group controlId='image2'>
                 <Form.Control type='text' placeholder='image2 url' value={image2} onChange={(e)=>setImage2(e.target.value)}></Form.Control>
