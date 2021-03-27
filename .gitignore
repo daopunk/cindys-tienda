@@ -3,6 +3,8 @@
 # dependencies
 ignore
 ignore/
+uploads
+uploads/
 node_modules
 node_modules/
 /.pnp
