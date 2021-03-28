@@ -26,12 +26,13 @@
   "homepage": "https://github.com/hking2/Cindys_Tienda#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.25.1",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.13",
+    "mongoose": "^5.12.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.2"
   },
