@@ -178,11 +178,6 @@ h3 {
   line-height: 1.8rem;
 }
 
-.about-icons {
-  text-align: center;
-  margin: 2rem 0 2rem 2rem;
-}
-
 .about-pic-sec-1 {
   margin: 0 2rem 0 2rem;
   background-image: url(./images/cindyBby.png);
@@ -203,11 +198,19 @@ h3 {
   width: 4rem;
 }
 
+.about-icons-container {
+  position: relative;
+  margin-bottom: 10rem;
+}
+
 .about-icon-1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
   height: 8rem;
   width: 8rem;
   border: 1px solid #777;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-image: url(./images/icon-collage-3.png);
   background-repeat: no-repeat;
   background-size: 100%;
@@ -215,21 +218,27 @@ h3 {
 }
 
 .about-icon-2 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
   height: 8rem;
   width: 8rem;
   border: 1px solid #777;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-image: url(./images/icon-earring-2.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
-  background-position: center; 
+  background-position: center;
 }
 
 .about-icon-3 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
   height: 8rem;
   width: 8rem;
   border: 1px solid #777;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   background-image: url(./images/icon-painting-3.jpg);
   background-repeat: no-repeat;
   background-size: 100%;
@@ -425,8 +434,26 @@ h3 {
 }
 
 @media only screen and (max-width: 460px) {
-  .ad-container {
+  .ad-carousel-img {
+    height: 10rem;
+  }
+  
+  .ad-carousel-desc-container {
+    padding-right: .75rem;
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .ad-h1 {
+    font-size: 1rem;
+  }
+
+  .ad-p {
     display: none;
+  }
+  
+  .ad-h2 {
+    font-size: .75rem;
   }
 
   .details-carousel-img {
@@ -436,6 +463,15 @@ h3 {
 }
 
 @media only screen and (max-width: 400px) {
+  .ad-carousel-img {
+    height: 9rem;
+  }
+  
+  .ad-carousel-desc-container {
+    width: 7rem;
+    height: 7rem;
+  }
+
   .details-carousel-img {
     width: 20rem;
     height: 20rem;
@@ -443,6 +479,15 @@ h3 {
 }
 
 @media only screen and (max-width: 360px) {
+  .ad-carousel-img {
+    height: 8rem;
+  }
+
+  .ad-carousel-desc-container {
+    width: 6rem;
+    height: 6rem;
+  }
+
   .main-title {
     font-weight: 400;
     font-size: 3rem;

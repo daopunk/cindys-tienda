@@ -55,21 +55,23 @@ const AboutScreen = () => {
         </div>
         <hr/>
         <h4 style={{textAlign:'center'}}>my offerings</h4>
-        <div className="row about-icons">
-          <div className="col">
-            <Link to={`/category?Collages`} >
-              <div className='about-icon-1'></div>
-            </Link>
-          </div>
-          <div className="col">
-            <Link to={`/category?Earrings`} >
-              <div className='about-icon-2'></div>
-            </Link>
-          </div>
-          <div className="col">
-            <Link to={`/category?Paintings`} >
-              <div className='about-icon-3'></div>
-            </Link>
+        <div className="about-icons-container">
+          <div className="row about-icons">
+            <div className="col">
+              <Link to={`/category?Collages`} >
+                <div className='about-icon-1'></div>
+              </Link>
+            </div>
+            <div className="col">
+              <Link to={`/category?Earrings`} >
+                <div className='about-icon-2'></div>
+              </Link>
+            </div>
+            <div className="col">
+              <Link to={`/category?Paintings`} >
+                <div className='about-icon-3'></div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
