@@ -19,12 +19,14 @@ const PlaceOrderScreen = ({ history }) => {
 
   // shipping cost
   const calcShipping = (arr) => {
-    let num = 0;
-    arr.map((item) => {
-      num += item.shipping;
-      // return (item.shipping > num) ? (num = item.shipping) : (num);
-    })
-    return num;
+    
+    return cart.cartItems.reduce((acc, item) => acc + (item.shipping * item.qty), 0);
+
+    // let num = 0;
+    // arr.map((item) => {
+    //   num += item.shipping;
+    //   return (item.shipping > num) ? (num = item.shipping) : (num);
+    // })
   }
 
   // calculate prices
